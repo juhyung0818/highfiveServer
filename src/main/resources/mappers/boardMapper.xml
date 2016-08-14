@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.highfive.mapper.BoardMapper">
+
+	<insert id="create">
+		insert into tbl_board (title, content, writer, startdate, enddate, language, flag)
+		values (#{title}, #{content}, #{writer}, #{startdate}, #{enddate}, #{language}, #{flag})
+	</insert>
+	
+	<select id="read" resultType="org.highfive.domain.BoardVO">
+ 		select bno, title, content, writer, regdate, startdate, enddate, viewcnt, replycnt, language, flag
+ 		from tbl_board where bno = #{bno}
+ 	</select>
+
+ 	<update id="modify">
+ 		update tbl_board set title=#{title}, content=#{content}, startDate=#{startdate}, enddate=#{enddate}, language=#{language} 
+ 		where bno=#{bno}
+ 	</update>
+
+ 	<delete id="delete">
+ 		delete from tbl_board where bno=#{bno}
+ 	</delete>
+
+	<select id="listAll" resultType="org.highfive.domain.BoardVO">
+ 	<![CDATA[ 
+ 		select  bno, title, content, writer, regdate, startdate, enddate, viewcnt, language, flag
+ 		from tbl_board  where bno > 0 
+ 		order by bno desc, regdate desc
+ 	]]>  
+ 	</select>
+
+</mapper>

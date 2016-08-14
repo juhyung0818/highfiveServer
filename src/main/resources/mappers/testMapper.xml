@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "org.highfive.mapper.TestMapper">
+
+	<insert id="insertTest">
+		insert into tbl_test (title, content, writer)
+		values (#{title}, #{content}, #{writer})
+	</insert>
+
+	<select id="readTest" resultType="org.highfive.domain.TestVO">
+		select * from tbl_test where bno=#{bno}
+	</select>
+
+
+
+</mapper>
