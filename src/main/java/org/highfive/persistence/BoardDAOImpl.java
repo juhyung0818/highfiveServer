@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.UserBoardVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -39,7 +40,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<BoardVO> listAll() throws Exception {
+	public List<UserBoardVO> listAll(int flag) throws Exception {
 		// TODO Auto-generated method stub
 		return session.selectList(namespace+".listAll");
 	}

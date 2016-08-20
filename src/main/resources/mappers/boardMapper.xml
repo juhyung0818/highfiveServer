@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="read" resultType="org.highfive.domain.BoardVO">
  		select bno, title, content, writer, regdate, startdate, enddate, viewcnt, replycnt, language, flag
- 		from tbl_board where bno = #{bno}
+ 		from tbl_board where bno=#{bno}
  	</select>
 
  	<update id="modify">
@@ -24,12 +24,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from tbl_board where bno=#{bno}
  	</delete>
 
-	<select id="listAll" resultType="org.highfive.domain.BoardVO">
+	<select id="listAll" resultType="org.highfive.domain.UserBoardVO">
  	<![CDATA[ 
  		select  bno, title, content, writer, regdate, startdate, enddate, viewcnt, language, flag
- 		from tbl_board  where bno > 0 
+ 				uname, uphoto
+ 		from tbl_board, tbl_user where writer=uid and bno > 0 and flag=#{flag}
  		order by bno desc, regdate desc
  	]]>  
  	</select>
+
+	
+
+
+
+
+
 
 </mapper>

@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>잘못된입</title>
+		<title>error</title>
 	</head>
 	
 	<body>

@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.highfive.mapper.UserMapper">
 
-	<insert id="register">
+	<insert id="regist">
 		insert into tbl_user (uid, uname, age, nation, sex, uphoto, email)
 		values (#{uid}, #{uname}, #{age}, #{nation}, #{sex}, #{uphoto}, #{email})
 	</insert>
 		
-	<select id="read">
-		select uname, age, nation, sex, uphoto
+	<select id="read" resultType="org.highfive.domain.UserVO">
+		select uname, age, nation, sex, uphoto, email
 		from tbl_user where uid=#{uid}
 	</select>
 

@@ -2,40 +2,50 @@ package org.highfive.persistence;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.UserVO;
+import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
 	@Inject
 	private SqlSession session;
 	private String namespace = "org.highfive.mapper.UserMapper";
 
 	@Override
-	public void register(UserVO user) throws Exception {
-		// TODO Auto-generated method stub
-		session.insert(namespace+".register", user);
+	public void regist(UserVO user) {
+		try{
+			session.insert(namespace+".regist", user);
+		} catch(PersistenceException e){
+			if(e.getCause() instanceof MySQLIntegrityConstraintViolationException){
+				throw new UserIdDuplicatedException();				
+			}
+			throw new RuntimeException();
+		}
 	}
 
 	@Override
 	public UserVO read(String uid) throws Exception {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace+".read", uid);
+		return session.selectOne(namespace + ".read", uid);
 	}
 
 	@Override
 	public void modify(UserVO user) throws Exception {
 		// TODO Auto-generated method stub
-		session.update(namespace+".modify");
+		session.update(namespace + ".modify");
 	}
 
 	@Override
 	public void delete(String user) throws Exception {
 		// TODO Auto-generated method stub
-		session.delete(namespace+".delete");
+		session.delete(namespace + ".delete");
 	}
-	
+
 }

@@ -8,15 +8,15 @@
 </head>
 <body>
 <h1>
-	REMOVE BNO
+	REMOVE UID
 </h1>
 
 <form fole="form" method="post">
 
 	<div class="box-body">
 		<div class="form-group">
-			<label for="exampleInputEmail1">bno</label>
-			<input type="text" name='bno' class="form-contorl">
+			<label for="exampleInputEmail1">uid</label>
+			<input type="text" name='uid' class="form-contorl">
 		</div>
 
 	<div class="box-footer">
