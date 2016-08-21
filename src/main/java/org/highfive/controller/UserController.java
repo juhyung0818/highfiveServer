@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserVO;
-import org.highfive.exception.ExceptionCode;
 import org.highfive.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -26,29 +26,37 @@ public class UserController {
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody UserVO user) throws Exception{
 		logger.info("register post.......");
-		
 		userService.regist(user);
 		return new ResultVO();
 	}
 	
+	//host/user/read?uid=#{uid}
 	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public @ResponseBody UserVO read() throws Exception{
+	public @ResponseBody UserVO read(@RequestParam String uid) throws Exception{
 		UserVO user = new UserVO();
-		user = userService.read("user");
+		user = userService.read(uid);
 		logger.info(user.toString());
 		return user;
 	}
 
-	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public void removeGET() throws Exception{
-		logger.info("remove GET.......");
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/remove", method=RequestMethod.GET)
+//	public ResultVO remove() throws Exception{
+//		logger.info("remove GET.......");
+//		String user="user";
+//		userService.read("\""+user+"\"");
+//		return new ResultVO();
+//	}
 	
+	@ResponseBody
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public String removePOST(String uid) throws Exception{
-		logger.info(userService.read(uid).toString());
-		userService.remove(uid);
-		return "/success";
+	public ResultVO remove(@RequestParam String uid) throws Exception{
+		logger.info("remove.....");
+//		String[] uid=body.split("\"");
+		String user="user";
+//		System.out.println(uid[1]);
+		userService.remove(user);
+		return new ResultVO();
 	}
 	
 	

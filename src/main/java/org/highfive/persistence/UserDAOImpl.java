@@ -5,10 +5,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.UserVO;
+import org.highfive.exception.InvalidTypeException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
 
-import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @Repository
@@ -20,13 +21,14 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void regist(UserVO user) {
-		try{
-			session.insert(namespace+".regist", user);
-		} catch(PersistenceException e){
-			if(e.getCause() instanceof MySQLIntegrityConstraintViolationException){
-				throw new UserIdDuplicatedException();				
+		try {
+			session.insert(namespace + ".regist", user);
+		} catch (PersistenceException e) {
+			if (e.getCause() instanceof InvalidFormatException) {
+				throw new InvalidTypeException();
+			} else if (e.getCause() instanceof MySQLIntegrityConstraintViolationException) {
+				throw new UserIdDuplicatedException();
 			}
-			throw new RuntimeException();
 		}
 	}
 

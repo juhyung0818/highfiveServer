@@ -2,15 +2,13 @@ package org.highfive.controller;
 
 import org.highfive.domain.ResultVO;
 import org.highfive.exception.ExceptionCode;
-import org.highfive.exception.HighfiveException;
+import org.highfive.exception.InvalidTypeException;
+import org.highfive.exception.UserIdDuplicatedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 @ControllerAdvice
 public class CommonExceptionAdvice {
@@ -18,8 +16,8 @@ public class CommonExceptionAdvice {
   private static final Logger logger = LoggerFactory.getLogger(CommonExceptionAdvice.class);
 
   @ResponseBody
-  @ExceptionHandler(HighfiveException.class)
-  public ResultVO highfiveException(HighfiveException e) {
+  @ExceptionHandler(UserIdDuplicatedException.class)
+  public ResultVO highfiveException(UserIdDuplicatedException e) {
 
     logger.error(e.getMessage());
     
@@ -31,14 +29,14 @@ public class CommonExceptionAdvice {
   }
   
   @ResponseBody
-  @ExceptionHandler(InvalidFormatException.class)
-  public ResultVO invalidFormatException(InvalidFormatException e) {
+  @ExceptionHandler(InvalidTypeException.class)
+  public ResultVO invalidFormatException(InvalidTypeException e) {
 
     logger.error(e.getMessage(), e.getStackTrace());
     
     ResultVO result = new ResultVO();
-    result.setCode(ExceptionCode.INVALID_TYPE.getCode()); //100 중복 id
-    result.setMessage(ExceptionCode.INVALID_TYPE.getMessage());
+    result.setCode(e.getExceptionCode().getCode()); //300 잘못된 타입
+    result.setMessage(e.getExceptionCode().getMessage());
  
     return result;
   }

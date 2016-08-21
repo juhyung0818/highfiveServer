@@ -6,11 +6,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,7 +30,7 @@ public class BoardController {
 //	public void registGET() throws Exception{
 //		logger.info("regist get.....");
 //	}
-	@RequestMapping(value="/regist")
+	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public String regist() throws Exception{
 		BoardVO vo = new BoardVO();
 		logger.info("register post.......");
@@ -42,7 +44,6 @@ public class BoardController {
 		BoardVO vo = new BoardVO();
 		vo = service.read(bno);
 		logger.info(vo.toString());
-//		model.addAttribute(service.read(bno));
 		return vo;
 	}
 	@RequestMapping(value="/listAll", method=RequestMethod.GET)
@@ -54,16 +55,12 @@ public class BoardController {
 //		model.addAttribute(service.read(bno));
 		return list;
 	}
-
-	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public void removeGET() throws Exception{
-		logger.info("remove GET.......");
-	}
 	
+	@ResponseBody
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public String removePOST(int bno) throws Exception{
+	public ResultVO remove(@RequestParam int bno) throws Exception{
 		logger.info(service.read(bno).toString());
 		service.remove(bno);
-		return "/success";
+		return new ResultVO();
 	}
 }
