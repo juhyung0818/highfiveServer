@@ -13,7 +13,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="readTest" resultType="org.highfive.domain.TestVO">
 		select * from tbl_test where bno=#{bno}
 	</select>
-
-
-
 </mapper>

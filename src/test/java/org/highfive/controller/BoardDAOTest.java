@@ -1,8 +1,11 @@
 package org.highfive.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.persistence.BoardDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,5 +30,11 @@ public class BoardDAOTest {
 		vo.setLanguage("jp");
 		vo.setFlag(0);
 		dao.create(vo);
+	}
+	
+	@Test
+	public void testListAll() throws Exception{
+		List<UserBoardVO> ubList = dao.listAll(0);
+		System.out.println(ubList.toString());
 	}
 }

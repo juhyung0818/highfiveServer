@@ -2,11 +2,10 @@ package org.highfive.domain;
 
 import java.util.Date;
 
-public class BoardVO {
-
+public class UserBoardVO {
+	
 	private int bno;
 	private String title;
-	private String content;
 	private String writer; //uid
 	private Date regdate;
 	private String startdate;
@@ -15,7 +14,9 @@ public class BoardVO {
 	private int replycnt;
 	private String language;
 	private int flag;
-
+	private String uname;
+	private String uphoto;
+	
 	public int getBno() {
 		return bno;
 	}
@@ -27,12 +28,6 @@ public class BoardVO {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String contnet) {
-		this.content = contnet;
 	}
 	public String getWriter() {
 		return writer;
@@ -82,10 +77,23 @@ public class BoardVO {
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getUphoto() {
+		return uphoto;
+	}
+	public void setUphoto(String uphoto) {
+		this.uphoto = uphoto;
+	}
 	@Override
 	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", contnet=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", startdate=" + startdate + ", enddate=" + enddate + ", viewcnt=" + viewcnt + ", replycnt="
-				+ replycnt + ", language=" + language + ", flag=" + flag + "]";
-	}
+		return "UserBoardVO [bno=" + bno + ", title=" + title + ", writer=" + writer + ", regdate=" + regdate
+				+ ", startdate=" + startdate + ", enddate=" + enddate + ", viewcnt=" + viewcnt + ", replycnt="
+				+ replycnt + ", language=" + language + ", flag=" + flag + ", uname=" + uname + ", uphoto=" + uphoto
+				+ "]";
+	}	
 }

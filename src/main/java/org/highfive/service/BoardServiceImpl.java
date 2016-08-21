@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class BoardServiceImpl implements BoardService{
 		board.setStartdate("2016-08-10");
 		board.setEnddate("2016-08-17");
 		board.setLanguage("jp");
-		board.setFlag(0);
+		board.setFlag(1);
 		dao.create(board);
 	}
 
@@ -46,9 +47,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> listAll() throws Exception {
+	public List<UserBoardVO> listAll(int flag) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.listAll();
+		return dao.listAll(flag);
 	}
 	
 }

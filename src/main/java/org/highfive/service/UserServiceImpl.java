@@ -4,7 +4,9 @@ import javax.inject.Inject;
 
 import org.highfive.domain.UserVO;
 import org.highfive.persistence.UserDAO;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Inject
@@ -12,20 +14,12 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void regist(UserVO user) throws Exception {
-		// TODO Auto-generated method stub
-		user.setUid("user01");
-		user.setUname("hello");
-		user.setAge(1993);
-		user.setNation("kr");
-		user.setSex(0); //male=0, female=1
-		user.setUphoto("default path");
-		user.setEmail("@address");
-		userDao.register(user);
+		userDao.regist(user);
 	}
 
 	@Override
 	public UserVO read(String uid) throws Exception {
-		// TODO Auto-generated method stub
+		// TODO permission check
 		return userDao.read(uid);
 	}
 
