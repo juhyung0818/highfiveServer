@@ -14,25 +14,21 @@ public class highfiveServiceImpl implements highfiveService{
 	private highfiveDAO hdao;
 	@Override
 	public void regist(highfiveVO high) {
-		// TODO Auto-generated method stub
-		hdao.create(high);
+		hdao.regist(high);
 	}
 
 	@Override
 	public highfiveVO read(Integer hno) {
-		// TODO Auto-generated method stub
 		return hdao.read(hno);
 	}
 
 	@Override
 	public void remove(Integer hno) {
-		// TODO Auto-generated method stub
 		hdao.delete(hno);
 	}
 
 	@Override
 	public List<highfiveVO> listAll() {
-		// TODO Auto-generated method stub
 		return hdao.listAll();
 	}
 

@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.highfive.mapper.highfiveMapper">
 
-	<insert id="create">
-		insert into tbl_highfive (hno, receiver, sender, flag, senddate )
-		values (#{hno},#{receiver},#{sender},#{flag},#{senddate})
+	<insert id="regist">
+		insert into tbl_highfive (receiver, sender, hiFlag )
+		values (#{receiver},#{sender},#{hiFlag})
 	</insert>
 	
 	<select id="read" resultType="org.highfive.domain.highfiveVO">

@@ -1,16 +1,19 @@
 package org.highfive.domain;
 
+import java.util.Date;
+
 public class highfiveVO {
 	private int hno;
 	private String receiver;
 	private String sender;
 	private int hiFlag;
-	private String senddate;
+	private Date senddate;
 	
-	public String getSenddate() {
+	
+	public Date getSenddate() {
 		return senddate;
 	}
-	public void setSenddate(String senddate) {
+	public void setSenddate(Date senddate) {
 		this.senddate = senddate;
 	}
 	public int getHno() {
@@ -32,16 +35,15 @@ public class highfiveVO {
 	public void setSender(String sender) {
 		this.sender = sender;
 	}
+	@Override
+	public String toString() {
+		return "highfiveVO [hno=" + hno + ", receiver=" + receiver + ", sender=" + sender + ", hiFlag=" + hiFlag
+				+ ", senddate=" + senddate + "]";
+	}
 	public int getHiFlag() {
 		return hiFlag;
 	}
 	public void setHiFlag(int hiFlag) {
 		this.hiFlag = hiFlag;
-	}
-	
-	@Override
-	public String toString() {
-		return "highfiveVO [hno=" + hno + ", receiver=" + receiver + ", sender=" + sender + ", hiFlag=" + hiFlag
-				+ ", senddate=" + senddate + "]";
 	}
 }

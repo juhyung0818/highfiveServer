@@ -6,7 +6,7 @@ import org.highfive.domain.highfiveVO;
 
 public interface highfiveDAO {
 	
-	public void create(highfiveVO hvo);
+	public void regist(highfiveVO hvo);
 	
 	public highfiveVO read(Integer hno);
 	

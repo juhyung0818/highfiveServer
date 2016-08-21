@@ -15,13 +15,13 @@ public class highfiveDAOTest {
 	@Inject
 	private highfiveDAO hdao;
 	
-	@Test
-	public void testCreate(){
-		highfiveVO high=new highfiveVO();
-		high.setReceiver("RESEIVER");
-		high.setSender("SENDER");
-		high.setHiFlag(0);
-		high.setSenddate("2016-08-18");
-		hdao.create(high);
-	}
+//	@Test
+//	public void testCreate(){
+//		highfiveVO high=new highfiveVO();
+//		high.setReceiver("RESEIVER");
+//		high.setSender("SENDER");
+//		high.setHiFlag(0);
+//		high.setSenddate("2016-08-18");
+//		hdao.create(high);
+//	}
 }

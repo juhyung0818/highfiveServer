@@ -16,9 +16,9 @@ public class highfiveDAOImpl implements highfiveDAO{
 	private static String namespace="org.highfive.mapper.highfiveMapper";
 
 	@Override
-	public void create(highfiveVO hvo) {
+	public void regist(highfiveVO hvo) {
 		// TODO Auto-generated method stub
-		session.insert(namespace+".create", hvo);
+		session.insert(namespace+".regist", hvo);
 	}
 
 	@Override
