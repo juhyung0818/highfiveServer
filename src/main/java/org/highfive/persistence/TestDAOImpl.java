@@ -16,13 +16,11 @@ public class TestDAOImpl implements TestDAO{
 
 	@Override
 	public void insertTest(TestVO vo) {
-		// TODO Auto-generated method stub
 		sqlSession.insert(namespace+".insertTest", vo);
 	}
 
 	@Override
 	public TestVO read(int bno) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".read", bno);
 	}
 	

@@ -19,19 +19,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO read(String uid) throws Exception {
-		// TODO permission check
 		return userDao.read(uid);
 	}
 
 	@Override
 	public void modify(UserVO user) throws Exception {
-		// TODO Auto-generated method stub
 		userDao.modify(user);
 	}
 
 	@Override
-	public void remove(String uid) throws Exception {
-		// TODO Auto-generated method stub
+	public void delete(String uid) throws Exception {
 		userDao.delete(uid);
 	}
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.highfive.mapper.ReplyMapper">
+
+	<insert id="regist">
+		insert into tbl_reply (content, uid, bno)
+		values (#{content}, #{uid}, #{bno})
+	</insert>
+	
+ 	<update id="modify">
+ 		update tbl_reply set content=#{content} 
+ 		where rno=#{rno} and uid=#{uid}
+ 	</update>
+
+ 	<delete id="delete">
+ 		delete from tbl_reply where rno=#{rno}
+ 	</delete>
+
+<!--  		delete from tbl_reply where rno=#{rno} and uid=#{uid} -->
+
+	<select id="list" resultType="org.highfive.domain.UserReplyVO">
+ 	<![CDATA[ 
+ 		select  u.uid, u.uname, u.uphoto, r.rno, r.bno, r.content, r.regdate
+ 		from tbl_board as b, tbl_reply as r, tbl_user as u
+ 		where r.uid=u.uid and r.bno=11
+ 		order by r.bno desc, r.regdate desc
+ 	]]>  
+ 	</select>
+		
+</mapper>

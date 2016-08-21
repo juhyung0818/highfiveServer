@@ -57,10 +57,10 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public ResultVO remove(@RequestParam int bno) throws Exception{
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public ResultVO delete(@RequestParam int bno) throws Exception{
 		logger.info(service.read(bno).toString());
-		service.remove(bno);
+		service.delete(bno);
 		return new ResultVO();
 	}
 }

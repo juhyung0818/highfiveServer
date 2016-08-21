@@ -34,20 +34,17 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserVO read(String uid) throws Exception {
-		// TODO Auto-generated method stub
 		return session.selectOne(namespace + ".read", uid);
 	}
 
 	@Override
 	public void modify(UserVO user) throws Exception {
-		// TODO Auto-generated method stub
 		session.update(namespace + ".modify");
 	}
 
 	@Override
-	public void delete(String user) throws Exception {
-		// TODO Auto-generated method stub
-		session.delete(namespace + ".delete");
+	public void delete(String uid) throws Exception {
+		session.delete(namespace + ".delete", uid);
 	}
 
 }

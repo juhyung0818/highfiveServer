@@ -49,13 +49,11 @@ public class UserController {
 //	}
 	
 	@ResponseBody
-	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public ResultVO remove(@RequestParam String uid) throws Exception{
-		logger.info("remove.....");
-//		String[] uid=body.split("\"");
-		String user="user";
-//		System.out.println(uid[1]);
-		userService.remove(user);
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public ResultVO delete(@RequestBody UserVO user) throws Exception{
+		logger.info("delete.....");
+//		String user="user";
+		userService.delete(user.getUid());
 		return new ResultVO();
 	}
 	

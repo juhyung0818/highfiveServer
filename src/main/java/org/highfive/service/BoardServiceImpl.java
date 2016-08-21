@@ -17,7 +17,6 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void regist(BoardVO board) throws Exception {
-		// TODO Auto-generated method stub
 		board.setTitle("new title");
 		board.setContent("new content");
 		board.setWriter("jh");
@@ -30,25 +29,21 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.read(bno);
 	}
 
 	@Override
 	public void modify(BoardVO board) throws Exception {
-		// TODO Auto-generated method stub
 		dao.modify(board);
 	}
 
 	@Override
-	public void remove(int bno) throws Exception {
-		// TODO Auto-generated method stub
+	public void delete(int bno) throws Exception {
 		dao.delete(bno);
 	}
 
 	@Override
 	public List<UserBoardVO> listAll(int flag) throws Exception {
-		// TODO Auto-generated method stub
 		return dao.listAll(flag);
 	}
 	
