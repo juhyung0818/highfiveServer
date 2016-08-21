@@ -6,7 +6,7 @@ public class UserVO {
 	private String uname;
 	private int age;
 	private String nation;
-	private Boolean sex;
+	private int sex;
 	private String uphoto;
 	private String email;
 	
@@ -34,10 +34,10 @@ public class UserVO {
 	public void setNation(String nation) {
 		this.nation = nation;
 	}
-	public Boolean getSex() {
+	public int getSex() {
 		return sex;
 	}
-	public void setSex(Boolean sex) {
+	public void setSex(int sex) {
 		this.sex = sex;
 	}
 	public String getUphoto() {
