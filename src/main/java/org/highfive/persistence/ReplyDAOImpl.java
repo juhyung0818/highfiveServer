@@ -37,5 +37,10 @@ public class ReplyDAOImpl implements ReplyDAO{
 		session.delete(namespace+".delete", rno);
 	}
 
+	@Override
+	public int getBno(int rno) throws Exception {
+		return session.selectOne(namespace+".getBno", rno);
+	}
+
 	
 }

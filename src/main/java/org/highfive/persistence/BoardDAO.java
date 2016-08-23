@@ -12,4 +12,8 @@ public interface BoardDAO {
 	public void modify(BoardVO vo) throws Exception;
 	public void delete(int bno) throws Exception;
 	public List<UserBoardVO> listAll(int flag) throws Exception;
+	public void updateReplyCnt(int bno, int amount) throws Exception;
+	public void updateViewCnt(int bno) throws Exception;
+	public List<UserBoardVO> searchList(String keyword) throws Exception;
+	
 }

@@ -11,4 +11,5 @@ public interface ReplyDAO {
 	public List<UserReplyVO> list(int bno) throws Exception;
 	public void modify(ReplyVO reply) throws Exception;
 	public void delete(int rno) throws Exception;
+	public int getBno(int rno) throws Exception;
 }

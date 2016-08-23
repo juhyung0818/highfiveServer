@@ -11,4 +11,5 @@ public interface BoardService {
 	public void modify(BoardVO board) throws Exception;
 	public void delete(int bno) throws Exception;
 	public List<UserBoardVO> listAll(int flag) throws Exception;
+	public List<UserBoardVO> searchList(String keyword) throws Exception;
 }
