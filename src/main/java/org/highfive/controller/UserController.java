@@ -20,6 +20,8 @@ public class UserController {
 
 	@Inject
 	private UserService userService;
+//	@Inject
+//	private HighfiveService hfService;
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
 	@ResponseBody
@@ -30,32 +32,30 @@ public class UserController {
 		return new ResultVO();
 	}
 	
-	//host/user/read?uid=#{uid}
-	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public @ResponseBody UserVO read(@RequestParam String uid) throws Exception{
-		UserVO user = new UserVO();
-		user = userService.read(uid);
+	@ResponseBody
+	@RequestMapping(value="/read", method=RequestMethod.POST)
+	public UserVO read(@RequestBody UserVO user) throws Exception{
+		//TODO highfive check method 
+		//return integer
+		// user = userService.read(user.getUid(), (int)flag);
+		user = userService.read(user.getUid());
 		logger.info(user.toString());
 		return user;
 	}
 
-//	@ResponseBody
-//	@RequestMapping(value="/remove", method=RequestMethod.GET)
-//	public ResultVO remove() throws Exception{
-//		logger.info("remove GET.......");
-//		String user="user";
-//		userService.read("\""+user+"\"");
-//		return new ResultVO();
-//	}
-	
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO delete(@RequestBody UserVO user) throws Exception{
 		logger.info("delete.....");
-//		String user="user";
 		userService.delete(user.getUid());
 		return new ResultVO();
 	}
 	
-	
+	@ResponseBody
+	@RequestMapping(value="/testRead", method=RequestMethod.POST)
+	public UserVO testRead(@RequestBody UserVO user) throws Exception{
+		user = userService.testRead(user.getUid(), 1);
+		logger.info(user.toString());
+		return user;
+	}
 }

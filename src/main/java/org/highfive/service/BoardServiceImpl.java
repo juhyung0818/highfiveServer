@@ -19,7 +19,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public void regist(BoardVO board) throws Exception {
-		dao.create(board);
+		dao.regist(board);
 	}
 
 	@Transactional

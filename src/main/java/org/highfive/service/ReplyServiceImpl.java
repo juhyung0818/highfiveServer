@@ -23,7 +23,7 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public void regist(ReplyVO reply) throws Exception {
 		boardDao.updateReplyCnt(reply.getBno(), 1);
-		replyDao.create(reply);
+		replyDao.regist(reply);
 	}
 
 	@Override

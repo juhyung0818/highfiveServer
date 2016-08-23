@@ -17,7 +17,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private String namespace = "org.highfive.mapper.ReplyMapper";
 	
 	@Override
-	public void create(ReplyVO reply) throws Exception {
+	public void regist(ReplyVO reply) throws Exception {
 		session.insert(namespace+".regist", reply);
 	}
 

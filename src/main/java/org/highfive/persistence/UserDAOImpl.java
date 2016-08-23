@@ -1,5 +1,8 @@
 package org.highfive.persistence;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -45,6 +48,14 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public void delete(String uid) throws Exception {
 		session.delete(namespace + ".delete", uid);
+	}
+
+	@Override
+	public UserVO testRead(String uid, int flag) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", uid);
+		paramMap.put("flag", flag);
+		return session.selectOne(namespace+".read", paramMap);
 	}
 
 }

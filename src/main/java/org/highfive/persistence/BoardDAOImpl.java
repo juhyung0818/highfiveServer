@@ -23,7 +23,7 @@ public class BoardDAOImpl implements BoardDAO{
 	private String namespace = "org.highfive.mapper.BoardMapper";
 	
 	@Override
-	public void create(BoardVO vo) throws Exception {
+	public void regist(BoardVO vo) throws Exception {
 		try{
 			session.insert(namespace+".create", vo);
 		} catch(PersistenceException e){
