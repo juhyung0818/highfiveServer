@@ -2,15 +2,14 @@ package org.highfive.service;
 
 import java.util.List;
 
-import org.highfive.domain.highfiveVO;
+import org.highfive.domain.HighfiveVO;
 
 public interface highfiveService {
-	public void regist(highfiveVO high);
-	
-	public highfiveVO read(Integer hno);
-
-	
-	public void delete(Integer hno);
-	
-	public List<highfiveVO> listAll();
+	public void regist(HighfiveVO hf);
+	public void delete(HighfiveVO hf);
+	public int  getFlag(HighfiveVO hf) throws Exception;
+	public void accept(HighfiveVO hf) throws Exception;
+	public List<HighfiveVO> highfiveList(String uid) throws Exception;
+	public List<HighfiveVO> sendList(String uid) throws Exception;
+	public List<HighfiveVO> receiveList(String uid) throws Exception;
 }

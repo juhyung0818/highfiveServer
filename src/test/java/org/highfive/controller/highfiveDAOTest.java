@@ -2,7 +2,7 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
-import org.highfive.domain.highfiveVO;
+import org.highfive.domain.HighfiveVO;
 import org.highfive.persistence.highfiveDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;

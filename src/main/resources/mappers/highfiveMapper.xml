@@ -3,31 +3,51 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.highfive.mapper.highfiveMapper">
+<mapper namespace="org.highfive.mapper.HighfiveMapper">
 
 	<insert id="regist">
-		insert into tbl_highfive (receiver, sender, hiFlag )
-		values (#{receiver},#{sender},#{hiFlag})
+		insert into tbl_highfive (receiver, sender, flag)
+		values (#{receiver},#{sender},#{flag})
 	</insert>
 	
-	<select id="read" resultType="org.highfive.domain.highfiveVO">
-		select hno, receiver, sender, flag, senddate from tbl_highfive where hno=#{hno}
-	</select>
-
 	<delete id="delete">
- 		delete from tbl_highfive where hno=#{hno}
+ 		delete from tbl_highfive where receiver=#{receiver} and sender=#{sender}
  	</delete>
  	
- 	<select id="listAll" resultType="org.highfive.domain.highfiveVO">
- 		<![CDATA[ 
- 		select  hno, receiver, sender, flag, senddate
- 		from tbl_highfive where bno > 0 
- 		order by hno desc, senddate desc
- 		]]>
- 	</select>
- 	
  	 <select id = "getFlag" resultType="int">
- 		select flag from tbl_reply where sender = #{sender}
+ 		select hiFlag from tbl_highfive where receiver=#{receiver} and sender=#{sender}
  	</select>
  	
+ 	<update id="accept">
+ 		update tbl_highfive set flag=0
+ 		where receiver=#{receiver} and sender=#{sender}
+ 	</update>
+ 	 	
+ 	<select id="highfiveList" resultType="org.highfive.domain.UserVO">
+ 		select u.uid, u.uname, u.age, u.nation, u.sex, u.uphoto, u.email
+ 		from tbl_user as u join tbl_highfive as h
+ 		on u.uid=h.sender
+ 		where flag=0 and receiver=#{receiver} 
+ 		order by h.senddate desc
+ 	</select>
+ 	
+ 	 <select id="snedList" resultType="org.highfive.domain.UserVO">
+ 		select u.uid, u.uname, u.age, u.nation, u.sex, u.uphoto
+ 		from tbl_user as u join tbl_highfive as h
+ 		on u.uid=h.sender
+ 		where flag=1 and receiver=#{receiver} 
+ 		order by h.senddate desc
+ 	</select>
+ 	
+ 	 <select id="receiveList" resultType="org.highfive.domain.UserVO">
+ 		select u.uid, u.uname, u.age, u.nation, u.sex, u.uphoto
+ 		from tbl_user as u join tbl_highfive as h
+ 		on u.uid=h.sender
+ 		where flag=2 and receiver=#{receiver} 
+ 		order by h.senddate desc
+ 	</select>
+
+
+
+
 </mapper>

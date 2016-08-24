@@ -2,8 +2,8 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
+import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.ResultVO;
-import org.highfive.domain.highfiveVO;
 import org.highfive.service.highfiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,28 +19,30 @@ public class highfiveController {
 	private static final Logger logger=LoggerFactory.getLogger(highfiveController.class);
 	
 	@Inject
-	private highfiveService hservice;
+	private highfiveService hService;
 	
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
-	public ResultVO registPOST(@RequestBody highfiveVO high){
-		logger.info("regist post...........");
-		logger.info(high.toString());
-		
-		hservice.regist(high);
-		
-
+	public ResultVO registPOST(@RequestBody HighfiveVO hf) throws Exception{
+		logger.info("highfive/regist.....");
+		hService.regist(hf);
 		return new ResultVO();
-		
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO deletePOST(@RequestBody highfiveVO high){
-		logger.info("delete post...........");
-				
-		hservice.delete(high.getHno());
-				
+	public ResultVO deletePOST(@RequestBody HighfiveVO hf) throws Exception{
+		logger.info("highfive/delete......");
+		hService.delete(hf);
 		return new ResultVO();
-		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/accept", method=RequestMethod.POST)
+	public ResultVO accept(@RequestBody HighfiveVO hf) throws Exception{
+		logger.info("highfive/accept......");
+		hService.accept(hf);
+		return new ResultVO();
+	}
+	
 }

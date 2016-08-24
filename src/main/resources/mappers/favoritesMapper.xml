@@ -3,10 +3,10 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.highfive.mapper.highfiveMapper">
+<mapper namespace="org.highfive.mapper.FavoritesMapper">
 
 	<insert id="regist">
-		insert into tbl_favorites ( uid, bno )
+		insert into tbl_favorites (uid, bno )
 		values (#{uid},#{bno})
 	</insert>
 	
@@ -14,16 +14,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from tbl_favorites where fno=#{fno}
  	</delete>
  	
-	<select id="read" resultType="org.highfive.domain.FavortiesVO">
+	<select id="read" resultType="org.highfive.domain.FavoritesVO">
 		select fno, uid, bno from tbl_favorites where fno=#{fno}
 	</select>
  	
- 	<select id="listAll" resultType="org.highfive.domain.FavortiesVO">
+ 	<select id="listAll" resultType="org.highfive.domain.FavoritesVO">
  		<![CDATA[ 
  		select  fno, uid, bno
  		from tbl_favorites where fno > 0 
  		order by fno desc
  		]]>
- 		    
+
  	</select>
 </mapper>
