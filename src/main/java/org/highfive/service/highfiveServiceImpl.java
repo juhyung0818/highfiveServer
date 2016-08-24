@@ -23,7 +23,7 @@ public class highfiveServiceImpl implements highfiveService{
 	}
 
 	@Override
-	public void remove(Integer hno) {
+	public void delete(Integer hno) {
 		hdao.delete(hno);
 	}
 

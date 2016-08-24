@@ -2,9 +2,9 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
+import org.highfive.domain.FavoritesVO;
 import org.highfive.domain.ResultVO;
-import org.highfive.domain.highfiveVO;
-import org.highfive.service.highfiveService;
+import org.highfive.service.FavoritesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,33 +14,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/highfive/*")
-public class highfiveController {
-	private static final Logger logger=LoggerFactory.getLogger(highfiveController.class);
+@RequestMapping("/Favorites/*")
+public class FavoritesController {
+	private static final Logger logger=LoggerFactory.getLogger(FavoritesController.class);
 	
 	@Inject
-	private highfiveService hservice;
+	private FavoritesService fservice;
 	
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
-	public ResultVO registPOST(@RequestBody highfiveVO high){
+	public ResultVO registPOST(@RequestBody FavoritesVO favorite){
 		logger.info("regist post...........");
-		logger.info(high.toString());
+		logger.info(favorite.toString());
 		
-		hservice.regist(high);
+		fservice.regist(favorite);
 		
-
 		return new ResultVO();
 		
 	}
+	
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO deletePOST(@RequestBody highfiveVO high){
+	public ResultVO deletePOST(@RequestBody FavoritesVO favorite){
 		logger.info("delete post...........");
-				
-		hservice.delete(high.getHno());
-				
+		
+		fservice.delete(favorite.getFno());
+		
 		return new ResultVO();
 		
-	}
+	}	
+
 }

@@ -24,10 +24,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from tbl_highfive where bno > 0 
  		order by hno desc, senddate desc
  		]]>
- 		<![CDATA[ 
- 		select  bno, title, content, writer, regdate, startdate, enddate, viewcnt, language, flag
- 		from tbl_board  where bno > 0 
- 		order by bno desc, regdate desc
- 		]]>    
  	</select>
 </mapper>
