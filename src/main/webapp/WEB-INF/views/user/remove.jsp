@@ -11,7 +11,7 @@
 	REMOVE UID
 </h1>
 
-<form fole="form" method="post">
+<form role="form" method="post">
 
 	<div class="box-body">
 		<div class="form-group">

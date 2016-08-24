@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -29,18 +28,18 @@ public class ReplyController {
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody ReplyVO reply) throws Exception{
-		logger.info("regist post.......");
+		logger.info("reply regist post.......");
 		replyService.regist(reply);
 		return new ResultVO();
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public List<UserReplyVO> list(@RequestParam int bno) throws Exception{
+	@RequestMapping(value="/list", method=RequestMethod.POST)
+	public List<UserReplyVO> list(@RequestBody ReplyVO reply) throws Exception{
 		List<UserReplyVO> list = new ArrayList<UserReplyVO>();
-		list = replyService.list(bno);
+		list = replyService.list(reply.getBno());
 		return list;
-	} //remake query 
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)

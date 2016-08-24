@@ -32,5 +32,10 @@ public class UserServiceImpl implements UserService{
 		userDao.delete(uid);
 	}
 
+	@Override
+	public UserVO testRead(String uid, int flag) throws Exception {
+		return userDao.testRead(uid, flag);
+	}
+
 	
 }

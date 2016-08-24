@@ -11,7 +11,6 @@ public class UserReplyVO {
 	private Integer bno;
 	private String content;
 	private Date regdate;
-	
 	public String getUid() {
 		return uid;
 	}
@@ -55,5 +54,5 @@ public class UserReplyVO {
 		this.regdate = regdate;
 	}
 	
-	
+
 }

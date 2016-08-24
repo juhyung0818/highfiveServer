@@ -8,6 +8,7 @@ import org.highfive.domain.BoardVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -15,20 +16,16 @@ public class BoardServiceImpl implements BoardService{
 	@Inject
 	private BoardDAO dao;
 	
+	
 	@Override
 	public void regist(BoardVO board) throws Exception {
-		board.setTitle("new title");
-		board.setContent("new content");
-		board.setWriter("jh");
-		board.setStartdate("2016-08-10");
-		board.setEnddate("2016-08-17");
-		board.setLanguage("jp");
-		board.setFlag(1);
-		dao.create(board);
+		dao.regist(board);
 	}
 
+	@Transactional
 	@Override
 	public BoardVO read(int bno) throws Exception {
+		dao.updateViewCnt(bno);
 		return dao.read(bno);
 	}
 
@@ -45,6 +42,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<UserBoardVO> listAll(int flag) throws Exception {
 		return dao.listAll(flag);
+	}
+
+	@Override
+	public List<UserBoardVO> searchList(String keyword) throws Exception {
+		return dao.searchList(keyword);
 	}
 	
 }

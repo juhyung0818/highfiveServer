@@ -1,6 +1,8 @@
 package org.highfive.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -19,8 +21,9 @@ public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	private SqlSession session;
 	private String namespace = "org.highfive.mapper.BoardMapper";
+	
 	@Override
-	public void create(BoardVO vo) throws Exception {
+	public void regist(BoardVO vo) throws Exception {
 		try{
 			session.insert(namespace+".create", vo);
 		} catch(PersistenceException e){
@@ -48,7 +51,26 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public List<UserBoardVO> listAll(int flag) throws Exception {
-		return session.selectList(namespace+".listAll");
+		return session.selectList(namespace+".listAll", flag);
+	}
+
+	@Override
+	public void updateReplyCnt(int bno, int amount) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("bno", bno);
+		paramMap.put("amount", amount);
+		
+		session.update(namespace+".updateReplyCnt", paramMap);
+	}
+
+	@Override
+	public void updateViewCnt(int bno) throws Exception {
+		session.update(namespace+".updateViewCnt", bno);
+	}
+
+	@Override
+	public List<UserBoardVO> searchList(String keyword) throws Exception {
+		return session.selectList(namespace+".searchList", keyword);
 	}
 
 	

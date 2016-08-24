@@ -17,7 +17,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private String namespace = "org.highfive.mapper.ReplyMapper";
 	
 	@Override
-	public void create(ReplyVO reply) throws Exception {
+	public void regist(ReplyVO reply) throws Exception {
 		session.insert(namespace+".regist", reply);
 	}
 
@@ -35,6 +35,11 @@ public class ReplyDAOImpl implements ReplyDAO{
 	public void delete(int rno) throws Exception {
 		//TODO add parameter (string)uid
 		session.delete(namespace+".delete", rno);
+	}
+
+	@Override
+	public int getBno(int rno) throws Exception {
+		return session.selectOne(namespace+".getBno", rno);
 	}
 
 	

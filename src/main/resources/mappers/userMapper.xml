@@ -14,6 +14,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select uid, uname, age, nation, sex, uphoto, email
 		from tbl_user where uid=#{uid}
 	</select>
+	
+	<select id="testRead" resultType="org.highfive.domain.UserVO">
+		select uid, uname, age, nation, sex, uphoto, email
+		from tbl_user where uid=#{uid} and #{flag}=1
+	</select>
 
 	<update id="modify">
 		update tbl_user set uname=#{uname}, age=#{age}, nation=#{nation}, sex=#{sex}, uphoto=#{uphoto}, email=#{email} 
