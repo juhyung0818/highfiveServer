@@ -5,14 +5,15 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.HighfiveVO;
-import org.highfive.persistence.highfiveDAO;
+import org.highfive.domain.UserVO;
+import org.highfive.persistence.HighfiveDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 @Service
-public class highfiveServiceImpl implements highfiveService{
+public class HighfiveServiceImpl implements HighfiveService{
 
 	@Inject
-	private highfiveDAO hfDao;
+	private HighfiveDAO hfDao;
 	
 	@Transactional
 	@Override
@@ -25,8 +26,8 @@ public class highfiveServiceImpl implements highfiveService{
 	@Transactional
 	@Override
 	public void delete(HighfiveVO hf) {
-		hfDao.delete(hf.getReceiver(), hf.getSender());
-		hfDao.delete(hf.getSender(), hf.getReceiver());
+		hfDao.delete(hf);
+		hfDao.delete(swapUser(hf));
 	}
 
 	@Override
@@ -50,18 +51,18 @@ public class highfiveServiceImpl implements highfiveService{
 	}
 
 	@Override
-	public List<HighfiveVO> highfiveList(String uid) throws Exception {
-		return null;
+	public List<UserVO> highfiveList(String uid) throws Exception {
+		return hfDao.highfiveList(uid);
 	}
 
 	@Override
-	public List<HighfiveVO> sendList(String uid) throws Exception {
-		return null;
+	public List<UserVO> sendList(String uid) throws Exception {
+		return hfDao.sendList(uid);
 	}
 
 	@Override
-	public List<HighfiveVO> receiveList(String uid) throws Exception {
-		return null;
+	public List<UserVO> receiveList(String uid) throws Exception {
+		return hfDao.receiveList(uid);
 	}
 
 }

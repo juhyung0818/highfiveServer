@@ -1,7 +1,6 @@
 package org.highfive.controller;
 
 import org.highfive.domain.ResultVO;
-import org.highfive.exception.ExceptionCode;
 import org.highfive.exception.InvalidTypeException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.slf4j.Logger;

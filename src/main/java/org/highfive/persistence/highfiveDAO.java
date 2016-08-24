@@ -5,10 +5,10 @@ import java.util.List;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
 
-public interface highfiveDAO {
+public interface HighfiveDAO {
 	
 	public void regist(HighfiveVO hf);
-	public void delete(String receiver, String sender);
+	public void delete(HighfiveVO hf);
 	public int getFlag(HighfiveVO hf) throws Exception;
 	public void accept(HighfiveVO hf) throws Exception;
 	public List<UserVO> highfiveList(String uid) throws Exception; //flag=0

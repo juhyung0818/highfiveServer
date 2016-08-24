@@ -1,8 +1,6 @@
 package org.highfive.persistence;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,7 +10,7 @@ import org.highfive.domain.UserVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class highfiveDAOImpl implements highfiveDAO{
+public class HighfiveDAOImpl implements HighfiveDAO{
 	@Inject
 	private SqlSession session;
 	
@@ -24,27 +22,18 @@ public class highfiveDAOImpl implements highfiveDAO{
 	}
 
 	@Override
-	public void delete(String receiver, String sender) {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("receiver", receiver);
-		paramMap.put("sender", sender);
-		session.delete(namespace+".delete", paramMap);
+	public void delete(HighfiveVO hf) {
+		session.delete(namespace+".delete", hf);
 	}
 
 	@Override
 	public int getFlag(HighfiveVO hf) throws Exception {
-		Map<String, Object> paramMap= new HashMap<String, Object>();
-		paramMap.put("receiver", hf.getReceiver());
-		paramMap.put("sender", hf.getSenddate());
-		return session.selectOne(namespace+".getFlag", paramMap);
+		return session.selectOne(namespace+".getFlag", hf);
 	}
 
 	@Override
 	public void accept(HighfiveVO hf) throws Exception {
-		Map<String, Object> paramMap= new HashMap<String, Object>();
-		paramMap.put("receiver", hf.getReceiver());
-		paramMap.put("sender", hf.getSenddate());
-		session.update(namespace+".accept", paramMap);
+		session.update(namespace+".accept", hf);
 	}
 
 	@Override
