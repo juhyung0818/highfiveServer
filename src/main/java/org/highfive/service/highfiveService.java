@@ -10,7 +10,7 @@ public interface highfiveService {
 	public highfiveVO read(Integer hno);
 
 	
-	public void remove(Integer hno);
+	public void delete(Integer hno);
 	
 	public List<highfiveVO> listAll();
 }

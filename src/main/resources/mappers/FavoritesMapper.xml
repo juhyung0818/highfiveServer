@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.highfive.mapper.highfiveMapper">
+
+	<insert id="regist">
+		insert into tbl_favorites ( uid, bno )
+		values (#{uid},#{bno})
+	</insert>
+	
+	<delete id="delete">
+ 		delete from tbl_favorites where fno=#{fno}
+ 	</delete>
+ 	
+	<select id="read" resultType="org.highfive.domain.FavortiesVO">
+		select fno, uid, bno from tbl_favorites where fno=#{fno}
+	</select>
+ 	
+ 	<select id="listAll" resultType="org.highfive.domain.FavortiesVO">
+ 		<![CDATA[ 
+ 		select  fno, uid, bno
+ 		from tbl_favorites where fno > 0 
+ 		order by fno desc
+ 		]]>
+ 		    
+ 	</select>
+</mapper>
