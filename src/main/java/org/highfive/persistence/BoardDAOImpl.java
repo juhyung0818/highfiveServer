@@ -25,7 +25,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void regist(BoardVO vo) throws Exception {
 		try{
-			session.insert(namespace+".create", vo);
+			session.insert(namespace+".regist", vo);
 		} catch(PersistenceException e){
 			if(e.getCause() instanceof MySQLIntegrityConstraintViolationException){
 				throw new UserIdDuplicatedException();				

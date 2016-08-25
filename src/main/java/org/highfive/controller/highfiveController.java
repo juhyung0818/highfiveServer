@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserVO;
-import org.highfive.service.HighfiveService;
+import org.highfive.service.highfiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/highfive/*")
-public class HighfiveController {
-	private static final Logger logger=LoggerFactory.getLogger(HighfiveController.class);
+public class highfiveController {
+	private static final Logger logger=LoggerFactory.getLogger(highfiveController.class);
 	
 	@Inject
-	private HighfiveService hService;
+	private highfiveService hService;
 	
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
