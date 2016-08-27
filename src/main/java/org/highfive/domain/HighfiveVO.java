@@ -2,7 +2,7 @@ package org.highfive.domain;
 
 import java.util.Date;
 
-public class highfiveVO {
+public class HighfiveVO {
 	private int hno;
 	private String receiver;
 	private String sender;

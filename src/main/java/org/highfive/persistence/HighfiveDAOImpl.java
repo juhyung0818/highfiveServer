@@ -5,23 +5,23 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.highfive.domain.highfiveVO;
+import org.highfive.domain.HighfiveVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class highfiveDAOImpl implements highfiveDAO{
+public class HighfiveDAOImpl implements HighfiveDAO{
 	@Inject
 	private SqlSession session;
 	
 	private static String namespace="org.highfive.mapper.highfiveMapper";
 
 	@Override
-	public void regist(highfiveVO hvo) {
+	public void regist(HighfiveVO hvo) {
 		session.insert(namespace+".regist", hvo);
 	}
 
 	@Override
-	public highfiveVO read(Integer hno) {
+	public HighfiveVO read(Integer hno) {
 		return session.selectOne(namespace+".read",hno);
 	}
 
@@ -31,7 +31,7 @@ public class highfiveDAOImpl implements highfiveDAO{
 	}
 
 	@Override
-	public List<highfiveVO> listAll() {
+	public List<HighfiveVO> listAll() {
 		return session.selectList(namespace+"listAll");
 	}
 }

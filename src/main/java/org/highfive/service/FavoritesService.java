@@ -3,7 +3,7 @@ package org.highfive.service;
 import java.util.List;
 
 import org.highfive.domain.FavoritesVO;
-import org.highfive.domain.highfiveVO;
+import org.highfive.domain.HighfiveVO;
 
 public interface FavoritesService {
 	public void regist(FavoritesVO favorite);

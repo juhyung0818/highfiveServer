@@ -4,21 +4,21 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.highfive.domain.highfiveVO;
-import org.highfive.persistence.highfiveDAO;
+import org.highfive.domain.HighfiveVO;
+import org.highfive.persistence.HighfiveDAO;
 import org.springframework.stereotype.Service;
 @Service
 public class highfiveServiceImpl implements highfiveService{
 
 	@Inject
-	private highfiveDAO hdao;
+	private HighfiveDAO hdao;
 	@Override
-	public void regist(highfiveVO high) {
+	public void regist(HighfiveVO high) {
 		hdao.regist(high);
 	}
 
 	@Override
-	public highfiveVO read(Integer hno) {
+	public HighfiveVO read(Integer hno) {
 		return hdao.read(hno);
 	}
 
@@ -28,7 +28,7 @@ public class highfiveServiceImpl implements highfiveService{
 	}
 
 	@Override
-	public List<highfiveVO> listAll() {
+	public List<HighfiveVO> listAll() {
 		return hdao.listAll();
 	}
 

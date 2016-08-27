@@ -29,7 +29,7 @@ public class BoardDAOTest {
 		vo.setEnddate("2016-08-17");
 		vo.setLanguage("jp");
 		vo.setFlag(0);
-		dao.create(vo);
+		dao.regist(vo);
 	}
 	
 	@Test

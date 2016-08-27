@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="read" resultType="org.highfive.domain.highfiveVO">
-		select hno, receiver, sender, flag, senddate from tbl_highfive where hno=#{hno}
+		select hno, receiver, sender, hiFlag, senddate from tbl_highfive where hno=#{hno}
 	</select>
 
 	<delete id="delete">
@@ -20,9 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	<select id="listAll" resultType="org.highfive.domain.highfiveVO">
  		<![CDATA[ 
- 		select  hno, receiver, sender, flag, senddate
- 		from tbl_highfive where bno > 0 
- 		order by hno desc, senddate desc
+ 		select  h.hno, h.receiver, h.sender, h.hiFlag, h.senddate
+ 		from tbl_highfive as h and tbl_user as u on h.receiver=u.uid
+ 		where hno > 0 
+ 		order by h.hno desc, h.hiFlag 
  		]]>
  	</select>
 </mapper>

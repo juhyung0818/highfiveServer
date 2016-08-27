@@ -2,8 +2,8 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
-import org.highfive.domain.highfiveVO;
-import org.highfive.persistence.highfiveDAO;
+import org.highfive.domain.HighfiveVO;
+import org.highfive.persistence.HighfiveDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class highfiveDAOTest {
 	@Inject
-	private highfiveDAO hdao;
+	private HighfiveDAO hdao;
 	
 //	@Test
 //	public void testCreate(){
