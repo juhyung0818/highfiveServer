@@ -2,9 +2,9 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
-import org.highfive.domain.HighfiveVO;
+//
 import org.highfive.persistence.HighfiveDAO;
-import org.junit.Test;
+//>>>>>>> 90cbf3d0ecefb3c07518dc7a94aad18e4c60bbb5
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

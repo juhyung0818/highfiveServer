@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserVO read(String uid) throws Exception {
-		return userDao.read(uid);
+	public UserVO read(String uid, int flag) throws Exception {
+		return userDao.read(uid, flag);
 	}
 
 	@Override
@@ -30,11 +30,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void delete(String uid) throws Exception {
 		userDao.delete(uid);
-	}
-
-	@Override
-	public UserVO testRead(String uid, int flag) throws Exception {
-		return userDao.testRead(uid, flag);
 	}
 
 	

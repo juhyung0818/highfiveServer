@@ -23,7 +23,7 @@ public class ReplyController {
 
 	@Inject
 	private ReplyService replyService;
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)

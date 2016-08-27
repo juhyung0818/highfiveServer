@@ -2,8 +2,10 @@ package org.highfive.controller;
 
 import javax.inject.Inject;
 
+import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserVO;
+import org.highfive.service.HighfiveService;
 import org.highfive.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -20,9 +21,9 @@ public class UserController {
 
 	@Inject
 	private UserService userService;
-//	@Inject
-//	private HighfiveService hfService;
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	@Inject
+	private highfiveService hfService;
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
@@ -34,11 +35,11 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/read", method=RequestMethod.POST)
-	public UserVO read(@RequestBody UserVO user) throws Exception{
-		//TODO highfive check method 
-		//return integer
-		// user = userService.read(user.getUid(), (int)flag);
-		user = userService.read(user.getUid());
+	public UserVO read(@RequestBody HighfiveVO hf) throws Exception{
+		logger.info("user/testRead ......");
+		int flag = hfService.getFlag(hf);
+		UserVO user = new UserVO();
+		user = userService.read(hf.getReceiver(), flag);
 		logger.info(user.toString());
 		return user;
 	}
@@ -49,13 +50,5 @@ public class UserController {
 		logger.info("delete.....");
 		userService.delete(user.getUid());
 		return new ResultVO();
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/testRead", method=RequestMethod.POST)
-	public UserVO testRead(@RequestBody UserVO user) throws Exception{
-		user = userService.testRead(user.getUid(), 1);
-		logger.info(user.toString());
-		return user;
 	}
 }

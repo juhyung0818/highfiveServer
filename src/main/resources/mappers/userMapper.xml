@@ -9,15 +9,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into tbl_user (uid, uname, age, nation, sex, uphoto, email)
 		values (#{uid}, #{uname}, #{age}, #{nation}, #{sex}, #{uphoto}, #{email})
 	</insert>
-		
-	<select id="read" resultType="org.highfive.domain.UserVO">
-		select uid, uname, age, nation, sex, uphoto, email
+	
+	<select id="nomalRead" resultType="org.highfive.domain.UserVO">
+		select uid, uname, age, nation, sex, uphoto
 		from tbl_user where uid=#{uid}
 	</select>
 	
-	<select id="testRead" resultType="org.highfive.domain.UserVO">
+	<select id="hiRead" resultType="org.highfive.domain.UserVO">
 		select uid, uname, age, nation, sex, uphoto, email
-		from tbl_user where uid=#{uid} and #{flag}=1
+		from tbl_user where uid=#{uid}
 	</select>
 
 	<update id="modify">
