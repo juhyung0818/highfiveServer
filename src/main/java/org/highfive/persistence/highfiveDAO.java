@@ -5,7 +5,7 @@ import java.util.List;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
 
-public interface HighfiveDAO {
+public interface highfiveDAO {
 	
 	public void regist(HighfiveVO hf);
 	public void delete(HighfiveVO hf);

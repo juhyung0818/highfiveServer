@@ -5,7 +5,7 @@ import java.util.List;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
 
-public interface HighfiveService {
+public interface highfiveService {
 	public void regist(HighfiveVO hf);
 	public void delete(HighfiveVO hf);
 	public int  getFlag(HighfiveVO hf) throws Exception;
