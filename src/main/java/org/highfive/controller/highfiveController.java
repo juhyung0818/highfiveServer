@@ -1,13 +1,9 @@
 package org.highfive.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
-import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.ResultVO;
-import org.highfive.domain.UserVO;
+import org.highfive.domain.highfiveVO;
 import org.highfive.service.highfiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,57 +19,23 @@ public class highfiveController {
 	private static final Logger logger=LoggerFactory.getLogger(highfiveController.class);
 	
 	@Inject
-	private highfiveService hService;
+	private highfiveService hservice;
 	
+//	@RequestMapping(value="/register", method=RequestMethod.GET)
+//	public void registerGET(highfiveVO hogh, Model hmodel){
+//		logger.info("register get........");
+//	}
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
-	public ResultVO registPOST(@RequestBody HighfiveVO hf) throws Exception{
-		logger.info("highfive/regist.....");
-		hService.regist(hf);
+	public ResultVO registPOST(@RequestBody highfiveVO high){
+		logger.info("regist post...........");
+		logger.info(high.toString());
+		
+		hservice.regist(high);
+		
+//		hmodel.addAttribute("result", "success");
+		
 		return new ResultVO();
+		
 	}
-	
-	@ResponseBody
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO deletePOST(@RequestBody HighfiveVO hf) throws Exception{
-		logger.info("highfive/delete......");
-		hService.delete(hf);
-		return new ResultVO();
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/highfiveList", method=RequestMethod.POST)
-	public List<UserVO> highfiveList(@RequestBody UserVO user) throws Exception{
-		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info(user.getUid()  + "highfive/highfiveList......");
-		users = hService.highfiveList(user.getUid());
-		return users;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/sendList", method=RequestMethod.POST)
-	public List<UserVO> sendList(@RequestBody UserVO user) throws Exception{
-		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info(user.getUid()  + "highfiv/sendList......");
-		users = hService.sendList(user.getUid());
-		return users;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/receiveList", method=RequestMethod.POST)
-	public List<UserVO> receiveList(@RequestBody UserVO user) throws Exception{
-		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info(user.getUid() + "highfive/receiveList......");
-		users = hService.receiveList(user.getUid());
-		return users;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/accept", method=RequestMethod.POST)
-	public ResultVO accept(@RequestBody HighfiveVO hf) throws Exception{
-		logger.info(hf.getReceiver() + " highfive/accept......");
-		hService.accept(hf);
-		return new ResultVO();
-	}
-	
 }
