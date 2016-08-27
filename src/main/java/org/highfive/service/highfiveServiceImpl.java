@@ -9,6 +9,7 @@ import org.highfive.domain.UserVO;
 import org.highfive.persistence.highfiveDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class highfiveServiceImpl implements highfiveService{
 

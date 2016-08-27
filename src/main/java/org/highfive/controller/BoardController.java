@@ -71,7 +71,4 @@ public class BoardController {
 		boardService.delete(board.getBno());
 		return new ResultVO();
 	}
-	
-	
-	
 }

@@ -26,6 +26,7 @@ public class HighfiveController {
 	private highfiveService hService;
 	
 	@ResponseBody
+	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public ResultVO registPOST(@RequestBody HighfiveVO hf) throws Exception{
 		logger.info("highfive/regist.....");
 		hService.regist(hf);
