@@ -65,6 +65,16 @@ public class BoardController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public ResultVO modify(@RequestBody BoardVO board) throws Exception{
+	
+		logger.info(board.getBno()+" update......");
+		boardService.modify(board);
+		
+		return new ResultVO();
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO delete(@RequestBody BoardVO board) throws Exception{
 		logger.info(boardService.read(board.getBno()).toString());

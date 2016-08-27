@@ -45,7 +45,7 @@ public class highfiveController {
 	@RequestMapping(value="/highfiveList", method=RequestMethod.POST)
 	public List<UserVO> highfiveList(@RequestBody UserVO user) throws Exception{
 		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info("highfive/accept......");
+		logger.info(user.getUid()  + "highfive/highfiveList......");
 		users = hService.highfiveList(user.getUid());
 		return users;
 	}
@@ -54,7 +54,7 @@ public class highfiveController {
 	@RequestMapping(value="/sendList", method=RequestMethod.POST)
 	public List<UserVO> sendList(@RequestBody UserVO user) throws Exception{
 		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info("highfive/accept......");
+		logger.info(user.getUid()  + "highfiv/sendList......");
 		users = hService.sendList(user.getUid());
 		return users;
 	}
@@ -63,7 +63,7 @@ public class highfiveController {
 	@RequestMapping(value="/receiveList", method=RequestMethod.POST)
 	public List<UserVO> receiveList(@RequestBody UserVO user) throws Exception{
 		List<UserVO> users = new ArrayList<UserVO>();
-		logger.info("highfive/accept......");
+		logger.info(user.getUid() + "highfive/receiveList......");
 		users = hService.receiveList(user.getUid());
 		return users;
 	}
@@ -71,7 +71,7 @@ public class highfiveController {
 	@ResponseBody
 	@RequestMapping(value="/accept", method=RequestMethod.POST)
 	public ResultVO accept(@RequestBody HighfiveVO hf) throws Exception{
-		logger.info("highfive/accept......");
+		logger.info(hf.getReceiver() + " highfive/accept......");
 		hService.accept(hf);
 		return new ResultVO();
 	}

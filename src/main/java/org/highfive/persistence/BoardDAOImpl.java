@@ -59,7 +59,6 @@ public class BoardDAOImpl implements BoardDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("bno", bno);
 		paramMap.put("amount", amount);
-		
 		session.update(namespace+".updateReplyCnt", paramMap);
 	}
 
