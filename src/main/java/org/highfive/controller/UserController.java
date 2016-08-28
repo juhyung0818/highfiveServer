@@ -5,8 +5,8 @@ import javax.inject.Inject;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserVO;
+import org.highfive.service.HighfiveService;
 import org.highfive.service.UserService;
-import org.highfive.service.highfiveService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ public class UserController {
 	@Inject
 	private UserService userService;
 	@Inject
-	private highfiveService hfService;
+	private HighfiveService hfService;
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@ResponseBody
