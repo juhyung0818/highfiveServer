@@ -40,19 +40,19 @@ public class CommonExceptionAdvice {
     return result;
   }
   
-
-  @ResponseBody
-  @ExceptionHandler(Exception.class)
-  public ResultVO common(Exception e) {
-
-    logger.error(e.getMessage());
-    
-    ResultVO result = new ResultVO();
-    result.setCode(100); //100 중복 id
-    result.setMessage("uid 겹쳐");
-   
-    return result;
-  }
+//
+//  @ResponseBody
+//  @ExceptionHandler(Exception.class)
+//  public ResultVO common(Exception e) {
+//
+//    logger.error(e.getMessage());
+//    
+//    ResultVO result = new ResultVO();
+//    result.setCode(100); //100 중복 id
+//    result.setMessage("SQL Exception");
+//   
+//    return result;
+//  }
   
 
 

@@ -6,10 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.HighfiveVO;
-//<<<<<<< HEAD:src/main/java/org/highfive/persistence/HighfiveDAOImpl.java
-//=======
 import org.highfive.domain.UserVO;
-//>>>>>>> 90cbf3d0ecefb3c07518dc7a94aad18e4c60bbb5:src/main/java/org/highfive/persistence/highfiveDAOImpl.java
 import org.springframework.stereotype.Repository;
 
 @Repository

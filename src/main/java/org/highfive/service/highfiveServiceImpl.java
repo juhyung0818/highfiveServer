@@ -18,7 +18,7 @@ public class highfiveServiceImpl implements highfiveService{
 	
 	@Transactional
 	@Override
-	public void regist(HighfiveVO hf) {
+	public void regist(HighfiveVO hf) throws Exception{
 		hf.setFlag(1);
 		hfDao.regist(hf);
 		hfDao.regist(swapUser(hf));
@@ -26,7 +26,7 @@ public class highfiveServiceImpl implements highfiveService{
 
 	@Transactional
 	@Override
-	public void delete(HighfiveVO hf) {
+	public void delete(HighfiveVO hf) throws Exception{
 		hfDao.delete(hf);
 		hfDao.delete(swapUser(hf));
 	}

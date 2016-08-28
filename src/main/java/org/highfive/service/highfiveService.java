@@ -6,8 +6,8 @@ import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
 
 public interface highfiveService {
-	public void regist(HighfiveVO hf);
-	public void delete(HighfiveVO hf);
+	public void regist(HighfiveVO hf) throws Exception;
+	public void delete(HighfiveVO hf) throws Exception;
 	public int  getFlag(HighfiveVO hf) throws Exception;
 	public void accept(HighfiveVO hf) throws Exception;
 	public List<UserVO> highfiveList(String uid) throws Exception;

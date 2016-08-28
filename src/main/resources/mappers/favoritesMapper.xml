@@ -4,20 +4,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.highfive.mapper.FavoritesMapper">
-
-	<insert id="regist">
-		insert into tbl_favorites (uid, bno )
-		values (#{uid},#{bno})
-	</insert>
-	
-	<delete id="delete">
- 		delete from tbl_favorites where fno=#{fno}
- 	</delete>
+ 	<!--  
+ 	1. favorites로 등록한 게시글 list
+ 	2. 내가 쓴 게시글 list 
+ 	3. 내가 댓글을 쓴 게시글 list
+ 	-->
  	
-
- 	<select id="listAll" resultType="org.highfive.domain.FavoritesVO">
- 	 	select  fno, uid, bno
- 		from tbl_favorites where fno > 0 
- 		order by fno desc
+ 	<insert id="regist">
+ 		insert into tbl_favorites (uid, bno)
+ 		values (#{uid}, #{bno})
+ 	</insert>
+ 	
+ 	<select id="favoritesList" resultType="int">
+		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		from tbl_board as b join tbl_user as u join tbl_favorites as f
+ 		on b.writer=u.uid
+ 		where b.bno=f.bno and f.uid=#{uid}
+ 		order by b.bno desc, b.regdate desc
  	</select>
+ 	
+ 	<select id="myBoardList" resultType="org.highfive.domain.BoardVO">
+ 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		from tbl_board as b join tbl_user as u
+ 		on b.writer=u.uid
+ 		where b.writer=#{uid}
+ 		order by b.bno desc, b.regdate descs
+ 	</select>
+ 	
+ 	<select id="myReplyList" resultType="org.highfive.domain.BoardVO">
+ 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		from tbl_board as b join tbl_user as u join tbl_reply as r
+ 		on b.writer=u.uid
+ 		where r.bno=b.bno and r.uid=#{uid}
+ 		order by b.bno desc, b.regdate descs
+ 	</select>
+
 </mapper>
