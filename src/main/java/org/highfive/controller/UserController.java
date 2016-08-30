@@ -35,13 +35,13 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/read", method=RequestMethod.POST)
-	public UserVO read(@RequestBody HighfiveVO hf) throws Exception{
+	public ResultVO<UserVO> read(@RequestBody HighfiveVO hf) throws Exception{
 		logger.info("user/testRead ......");
 		int flag = hfService.getFlag(hf);
 		UserVO user = new UserVO();
 		user = userService.read(hf.getReceiver(), flag);
 		logger.info(user.toString());
-		return user;
+		return new ResultVO<>(user);
 	}
 
 	@ResponseBody

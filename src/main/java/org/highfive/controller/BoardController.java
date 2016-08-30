@@ -38,30 +38,30 @@ public class BoardController {
 	//host/board/read?bno=8
 	@ResponseBody
 	@RequestMapping(value="/read", method=RequestMethod.POST)
-	public BoardVO read(@RequestBody BoardVO board) throws Exception{
+	public ResultVO<BoardVO> read(@RequestBody BoardVO board) throws Exception{
 		board = boardService.read(board.getBno());
 		logger.info(board.toString());
-		return board;
+		return new ResultVO<>(board);
 	}
 	
 	//host/board/listAll?flag=#{flag} 외국인=0, 내국인=1
 	@ResponseBody
 	@RequestMapping(value="/listAll", method=RequestMethod.POST)
-	public List<UserBoardVO> listAll(@RequestBody BoardVO board) throws Exception{
+	public ResultVO<List<UserBoardVO>> listAll(@RequestBody BoardVO board) throws Exception{
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = boardService.listAll(board.getFlag());
 		logger.info("board listAll.....");
-		return list;
+		return new ResultVO<>(list);
 	}
 	
 	//host/board/searchList?keyword=new
 	@ResponseBody
 	@RequestMapping(value="/searchList", method=RequestMethod.POST)
-	public List<UserBoardVO> searchList(@RequestBody SearchKeyword keyword) throws Exception{
+	public ResultVO<List<UserBoardVO>> searchList(@RequestBody SearchKeyword keyword) throws Exception{
 		logger.info("board searchList keyword : " + keyword.getKeyword());
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = boardService.searchList(keyword.getKeyword());
-		return list;
+		return new ResultVO<>(list);
 	}
 	
 	@ResponseBody

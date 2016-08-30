@@ -10,7 +10,6 @@ import org.highfive.domain.UserVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
 public class HighfiveDAOImpl implements HighfiveDAO {
 
 	@Inject
