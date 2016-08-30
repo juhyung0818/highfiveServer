@@ -35,10 +35,10 @@ public class ReplyController {
 	
 	@ResponseBody
 	@RequestMapping(value="/list", method=RequestMethod.POST)
-	public List<UserReplyVO> list(@RequestBody ReplyVO reply) throws Exception{
+	public ResultVO<List<UserReplyVO>> list(@RequestBody ReplyVO reply) throws Exception{
 		List<UserReplyVO> list = new ArrayList<UserReplyVO>();
 		list = replyService.list(reply.getBno());
-		return list;
+		return new ResultVO<>(list);
 	}
 	
 	@ResponseBody

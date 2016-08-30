@@ -2,16 +2,16 @@ package org.highfive.domain;
 
 import org.highfive.exception.ExceptionCode;
 
-public class ResultVO {
+public class ResultVO<T> {
 	private int code = ExceptionCode.NONE.getCode();
 	private String message =ExceptionCode.NONE.getMessage();
-	private Object result;
+	private T result; //object
 	
 	public ResultVO() {}
-	public ResultVO(Object result){
+	public ResultVO(T result){
 		this.result = result;
 	}
-	
+		
 	public int getCode() {
 		return code;
 	}
@@ -27,7 +27,7 @@ public class ResultVO {
 	public Object getResult() {
 		return result;
 	}
-	public void setResult(Object result) {
+	public void setResult(T result) {
 		this.result = result;
 	}
 	@Override

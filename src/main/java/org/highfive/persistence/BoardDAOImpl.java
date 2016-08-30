@@ -25,7 +25,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void regist(BoardVO vo) throws Exception {
 		try{
-			session.insert(namespace+".create", vo);
+			session.insert(namespace+".regist", vo);
 		} catch(PersistenceException e){
 			if(e.getCause() instanceof MySQLIntegrityConstraintViolationException){
 				throw new UserIdDuplicatedException();				
@@ -59,7 +59,6 @@ public class BoardDAOImpl implements BoardDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("bno", bno);
 		paramMap.put("amount", amount);
-		
 		session.update(namespace+".updateReplyCnt", paramMap);
 	}
 

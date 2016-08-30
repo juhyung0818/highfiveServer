@@ -24,11 +24,8 @@ public class FavoritesController {
 	@ResponseBody
 	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public ResultVO registPOST(@RequestBody FavoritesVO favorite){
-		logger.info("regist post...........");
-		logger.info(favorite.toString());
-		
+		logger.info("favorites/" +favorite.toString());
 		fservice.regist(favorite);
-		
 		return new ResultVO();
 		
 	}
@@ -36,12 +33,9 @@ public class FavoritesController {
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO deletePOST(@RequestBody FavoritesVO favorite){
-		logger.info("delete post...........");
-		
+		logger.info("favorites/delete...........");
 		fservice.delete(favorite.getFno());
-		
 		return new ResultVO();
-		
 	}	
 
 }

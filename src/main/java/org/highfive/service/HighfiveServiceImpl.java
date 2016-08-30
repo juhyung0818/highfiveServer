@@ -5,21 +5,21 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.HighfiveVO;
-//<<<<<<< HEAD
-//=======
 import org.highfive.domain.UserVO;
-//>>>>>>> 90cbf3d0ecefb3c07518dc7a94aad18e4c60bbb5
 import org.highfive.persistence.HighfiveDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 @Service
-public class highfiveServiceImpl implements highfiveService{
+public class HighfiveServiceImpl implements HighfiveService {
+
 	@Inject
+
 	private HighfiveDAO hfDao;
-	
+
 	@Transactional
 	@Override
-	public void regist(HighfiveVO hf) {
+	public void regist(HighfiveVO hf) throws Exception {
 		hf.setFlag(1);
 		hfDao.regist(hf);
 		hfDao.regist(swapUser(hf));
@@ -27,7 +27,9 @@ public class highfiveServiceImpl implements highfiveService{
 
 	@Transactional
 	@Override
-	public void delete(HighfiveVO hf) {
+
+	public void delete(HighfiveVO hf) throws Exception {
+
 		hfDao.delete(hf);
 		hfDao.delete(swapUser(hf));
 	}
@@ -39,12 +41,13 @@ public class highfiveServiceImpl implements highfiveService{
 
 	@Transactional
 	@Override
-	public void accept(HighfiveVO hf) throws Exception {		
+	public void accept(HighfiveVO hf) throws Exception {
+
 		hfDao.accept(hf);
 		hfDao.accept(swapUser(hf));
 	}
-	
-	public HighfiveVO swapUser(HighfiveVO hf){
+
+	public HighfiveVO swapUser(HighfiveVO hf) {
 		HighfiveVO fh = new HighfiveVO();
 		fh.setReceiver(hf.getSender());
 		fh.setSender(hf.getReceiver());

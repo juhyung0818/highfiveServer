@@ -3,11 +3,6 @@ package org.highfive.domain;
 import java.util.Date;
 
 public class HighfiveVO {
-//<<<<<<< HEAD:src/main/java/org/highfive/domain/HighfiveVO.java
-//	private int hno;
-//=======
-//>>>>>>> 90cbf3d0ecefb3c07518dc7a94aad18e4c60bbb5:src/main/java/org/highfive/domain/HighfiveVO.java
-	
 		
 	private String receiver;
 	private String sender;

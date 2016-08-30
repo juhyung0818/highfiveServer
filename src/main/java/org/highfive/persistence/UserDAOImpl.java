@@ -38,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 			return session.selectOne(namespace+".hiRead", uid);
 		}
 		else{
-			return session.selectOne(namespace+".nomalread", uid);
+			return session.selectOne(namespace+".nomalRead", uid);
 		}
 	}
 	

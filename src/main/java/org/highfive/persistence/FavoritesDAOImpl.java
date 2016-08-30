@@ -24,7 +24,6 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 	@Override
 	public void delete(int fno) {
 		session.delete(namespace+".regist",fno);
-		
 	}
 
 	@Override
