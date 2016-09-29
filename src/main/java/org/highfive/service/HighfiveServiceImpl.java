@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class HighfiveServiceImpl implements HighfiveService {
 
 	@Inject
-
 	private HighfiveDAO hfDao;
 
 	@Transactional
