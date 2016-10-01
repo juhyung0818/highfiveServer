@@ -15,7 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		values (#{uid}, #{bno})
  	</insert>
  	
+<<<<<<< HEAD
  	<select id="favoritesList" resultType="org.highfive.domain.BoardVO">
+=======
+ 	<select id="favoritesList" resultType="org.highfive.domain.UserBoardVO">
+>>>>>>> 1afe8451e8d73f6ae50a8b7c7be42080233842ba
 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u join tbl_favorites as f
  		on b.writer=u.uid
@@ -23,20 +27,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by b.bno desc, b.regdate desc
  	</select>
  	
- 	<select id="myBoardList" resultType="org.highfive.domain.BoardVO">
+ 	<select id="myBoardList" resultType="org.highfive.domain.UserBoardVO">
  		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u
  		on b.writer=u.uid
  		where b.writer=#{uid}
- 		order by b.bno desc, b.regdate descs
+ 		order by b.bno desc, b.regdate desc
  	</select>
  	
- 	<select id="myReplyList" resultType="org.highfive.domain.BoardVO">
+ 	<select id="myReplyList" resultType="org.highfive.domain.UserBoardVO">
  		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u join tbl_reply as r
  		on b.writer=u.uid
  		where r.bno=b.bno and r.uid=#{uid}
- 		order by b.bno desc, b.regdate descs
+ 		order by b.bno desc, b.regdate desc
  	</select>
+ 	
 
 </mapper>

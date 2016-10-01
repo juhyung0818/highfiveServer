@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.persistence.FavoritesDAO;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +15,30 @@ public class FavoritesServiceImpl implements FavoritesService{
 	@Inject
 	private FavoritesDAO fdao;
 	
+	//좋아하는 게시글로 등록
 	@Override
 	public void regist(FavoritesVO favorite){
 		fdao.regist(favorite);
-		
 	}
-
-	@Override
-	public FavoritesVO read(int fno) {
-		return fdao.read(fno);
-	}
-
+	
+	//좋아하는 게시글 목록에서 삭제
 	@Override
 	public void delete(int fno) {
 		fdao.delete(fno);
-		
 	}
 
 	@Override
-	public List<FavoritesVO> listAll() {
-		return fdao.listAll();
+	public List<UserBoardVO> favoritesList(String uid) {
+		return fdao.myFavoritesList(uid);
 	}
 
+	@Override
+	public List<UserBoardVO> myBoardList(String uid) {
+		return fdao.myBoardList(uid);
+	}
+
+	@Override
+	public List<UserBoardVO> myReplyList(String uid) {
+		return fdao.myReplyList(uid);
+	}
 }
