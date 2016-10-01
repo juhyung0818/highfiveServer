@@ -7,14 +7,14 @@ public class HighfiveVO {
 	private String receiver;
 	private String sender;
 	private int flag;
-	private Date senddate;
+	private Date sendDate;
 
 	public Date getSenddate() {
-		return senddate;
+		return sendDate;
 	}
 
 	public void setSenddate(Date senddate) {
-		this.senddate = senddate;
+		this.sendDate = senddate;
 	}
 
 	public String getReceiver() {
