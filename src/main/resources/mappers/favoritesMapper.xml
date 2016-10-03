@@ -15,11 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		values (#{uid}, #{bno})
  	</insert>
  	
-<<<<<<< HEAD
- 	<select id="favoritesList" resultType="org.highfive.domain.BoardVO">
-=======
  	<select id="favoritesList" resultType="org.highfive.domain.UserBoardVO">
->>>>>>> 1afe8451e8d73f6ae50a8b7c7be42080233842ba
 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u join tbl_favorites as f
  		on b.writer=u.uid
