@@ -33,7 +33,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public UserVO read(String uid, int flag) throws Exception {
+	public UserVO read(String uid, int flag){
+		
 		if(flag == 0){
 			return session.selectOne(namespace+".hiRead", uid);
 		}
