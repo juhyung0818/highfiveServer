@@ -51,7 +51,6 @@ public class HighfiveController {
 		logger.info("highfive/accept......");
 		users = hService.highfiveList(user.getUid());
 		return new ResultVO<>(users);
-
 	}
 
 	@ResponseBody

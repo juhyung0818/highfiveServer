@@ -3,6 +3,7 @@ package org.highfive.domain;
 public class SearchKeyword {
 
 	private String keyword;
+	private int flag;
 
 	public String getKeyword() {
 		return keyword;
@@ -11,4 +12,13 @@ public class SearchKeyword {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
+	public int getFlag(){
+		return flag;
+	}
+	
+	public void setFlag(int flag){
+		this.flag = flag;
+	}
+	
 }

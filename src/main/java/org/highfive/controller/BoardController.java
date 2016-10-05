@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
@@ -60,7 +61,7 @@ public class BoardController {
 	public ResultVO<List<UserBoardVO>> searchList(@RequestBody SearchKeyword keyword) throws Exception{
 		logger.info("board searchList keyword : " + keyword.getKeyword());
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
-		list = boardService.searchList(keyword.getKeyword());
+		list = boardService.searchList(keyword);
 		return new ResultVO<>(list);
 	}
 	
@@ -76,7 +77,17 @@ public class BoardController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO delete(@RequestBody BoardVO board) throws Exception{
 		logger.info(boardService.read(board.getBno()).toString());
-		boardService.delete(board.getBno());
+		boardService.delete(board);
 		return new ResultVO();
+	}
+	
+	//host/board/pageList
+	@ResponseBody
+	@RequestMapping(value="/pageList", method=RequestMethod.POST)
+	public ResultVO<List<UserBoardVO>> pageList(@RequestBody PageVO page) throws Exception{
+		logger.info("board pageList.....");
+		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
+		list = boardService.pageList(page);
+		return new ResultVO<>(list);
 	}
 }

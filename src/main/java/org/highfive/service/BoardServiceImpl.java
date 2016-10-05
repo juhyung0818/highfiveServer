@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.PageVO;
+import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
@@ -35,8 +37,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void delete(int bno) throws Exception {
-		dao.delete(bno);
+	public void delete(BoardVO board) throws Exception {
+		dao.delete(board);
 	}
 
 	@Override
@@ -45,8 +47,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<UserBoardVO> searchList(String keyword) throws Exception {
+	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception {
 		return dao.searchList(keyword);
+	}
+
+	@Override
+	public List<UserBoardVO> pageList(PageVO page) throws Exception {
+		return dao.pageList(page);
 	}
 	
 }

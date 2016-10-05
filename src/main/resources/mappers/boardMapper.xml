@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</update>
 
  	<delete id="delete">
- 		delete from tbl_board where bno=#{bno}
+ 		delete from tbl_board where bno=#{bno} and writer=#{writer}
  	</delete>
 
 	<select id="listAll" resultType="org.highfive.domain.UserBoardVO">
@@ -45,7 +45,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u
  		on b.writer=u.uid
- 		where (b.title like CONCAT('%', #{keyword}, '%') OR b.content like CONCAT('%', #{keyword}, '%'))
+ 		where (b.title like CONCAT('%', #{keyword}, '%') OR b.content like CONCAT('%', #{keyword}, '%')) and flag=#{flag}
  		order by b.bno desc, b.regdate desc
+	</select>
+	
+	<select id="pageList" resultType="org.highfive.domain.UserBoardVO">
+		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		from tbl_board as b join tbl_user as u
+ 		on b.writer=u.uid
+ 		where flag=#{flag}
+ 		order by b.bno desc, b.regdate desc 
+		limit #{page}, #{perPageNum}
 	</select>
 </mapper>

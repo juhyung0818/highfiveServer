@@ -31,17 +31,18 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 	}
-	
+
 	@Override
 	public UserVO read(String uid, int flag) throws Exception {
-		if(flag == 0){
-			return session.selectOne(namespace+".hiRead", uid);
+
+		if (flag == 0) {
+			return session.selectOne(namespace + ".hiRead", uid);
+		} else {
+			return session.selectOne(namespace + ".nomalRead", uid);
 		}
-		else{
-			return session.selectOne(namespace+".nomalRead", uid);
-		}
+
 	}
-	
+
 	@Override
 	public void modify(UserVO user) throws Exception {
 		session.update(namespace + ".modify");
@@ -51,7 +52,5 @@ public class UserDAOImpl implements UserDAO {
 	public void delete(String uid) throws Exception {
 		session.delete(namespace + ".delete", uid);
 	}
-
-
 
 }

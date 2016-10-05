@@ -9,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.BoardVO;
+import org.highfive.domain.PageVO;
+import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
@@ -45,8 +47,11 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public void delete(int bno) throws Exception {
-		session.delete(namespace+".delete", bno);
+	public void delete(BoardVO board) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("bno", board.getBno());
+		paramMap.put("writer", board.getWriter());
+		session.delete(namespace+".delete", paramMap);
 	}
 
 	@Override
@@ -68,8 +73,20 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<UserBoardVO> searchList(String keyword) throws Exception {
-		return session.selectList(namespace+".searchList", keyword);
+	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("keyword", keyword.getKeyword());
+		paramMap.put("flag", keyword.getFlag());
+		return session.selectList(namespace+".searchList", paramMap);
+	}
+
+	@Override
+	public List<UserBoardVO> pageList(PageVO page) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("flag", page.getFlag());
+		paramMap.put("page", page.getPage());
+		paramMap.put("perPageNum", page.getPerPageNum());
+		return session.selectList(namespace + ".pageList", paramMap);
 	}
 
 	

@@ -4,14 +4,15 @@
   pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
+	<title>온라인 시험 및 성적 관리 웹</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	Hello world!  <br>
+	온라인 시험 및 성적 관리 웹
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P> <br>
-내 컴퓨터에서 구현한 서버를 안드로이드로 접속합니다.
+
 </body>
 </html>
