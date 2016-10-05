@@ -16,7 +16,7 @@ public class PageVO {
 	}
 	
 	PageVO(){
-		perPageNum = 3;
+		perPageNum = 10;
 	}
 	
 	public int getPage() {

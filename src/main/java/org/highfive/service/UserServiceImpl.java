@@ -33,4 +33,33 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
+	//already user: true
+	//new user : false
+	@Override
+	public boolean checkUser(UserVO user) throws Exception {
+		try{
+			if(userDao.checkUser(user).equals(user.getUid())){
+				return true;
+			}
+			return false;
+		} catch(NullPointerException e){
+			return false;
+		}
+	}
+	
+	//already name: true
+	//new name : false
+	@Override
+	public boolean checkUname(UserVO user) throws Exception {
+		try{
+			if(userDao.checkUname(user).equals(user.getUname())){
+				return true;
+			}
+			return false;
+		} catch(NullPointerException e){
+			return false;
+		}
+	}
+
+	
 }

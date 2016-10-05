@@ -6,9 +6,10 @@ import org.highfive.domain.FavoritesVO;
 import org.highfive.domain.UserBoardVO;
 
 public interface FavoritesService {
-	public void regist(FavoritesVO favorite);
-	public void delete(int fno);
-	public List<UserBoardVO> favoritesList(String uid);
-	public List<UserBoardVO> myBoardList(String uid);
-	public List<UserBoardVO> myReplyList(String uid);
+	public void  isLike(FavoritesVO favorite) throws Exception;
+	public void regist(FavoritesVO favorite) throws Exception;
+	public void delete(int fno) throws Exception;
+	public List<UserBoardVO> favoritesList(String uid) throws Exception;
+	public List<UserBoardVO> myBoardList(String uid) throws Exception;
+	public List<UserBoardVO> myReplyList(String uid) throws Exception;
 }

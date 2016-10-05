@@ -51,4 +51,14 @@ public class UserDAOImpl implements UserDAO {
 		session.delete(namespace + ".delete", uid);
 	}
 
+	@Override
+	public String checkUser(UserVO user) throws Exception {
+		return session.selectOne(namespace + ".checkUser", user.getUid());
+	}
+	
+	@Override
+	public String checkUname(UserVO user) throws Exception {
+		return session.selectOne(namespace + ".checkName", user.getUname());
+	}
+
 }

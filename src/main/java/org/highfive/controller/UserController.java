@@ -58,4 +58,18 @@ public class UserController {
 		return new ResultVO();
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/checkUser", method=RequestMethod.POST)
+	public ResultVO<Boolean> checkUser(@RequestBody UserVO user) throws Exception{
+		logger.info(user.getUid() + "checkUser.....");
+		return new ResultVO<>(userService.checkUser(user));
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/checkName", method=RequestMethod.POST)
+	public ResultVO<Boolean> checkName(@RequestBody UserVO user) throws Exception{
+		logger.info(user.getUname() + "checkUser.....");
+		return new ResultVO<>(userService.checkUser(user));
+	}
+	
 }

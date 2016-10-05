@@ -9,7 +9,7 @@ import org.highfive.domain.UserBoardVO;
 
 public interface BoardService {
 	public void regist(BoardVO board) throws Exception;
-	public BoardVO read(int bno) throws Exception;
+	public BoardVO read(BoardVO board) throws Exception;
 	public void modify(BoardVO board) throws Exception;
 	public void delete(BoardVO board) throws Exception;
 	public List<UserBoardVO> listAll(int flag) throws Exception;

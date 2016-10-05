@@ -14,6 +14,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		insert into tbl_favorites (uid, bno)
  		values (#{uid}, #{bno})
  	</insert>
+
+ 	<insert id="delete">
+ 		delete from tbl_favorites (uid, bno)
+ 		values (#{uid}, #{bno})
+ 	</insert>
  	
  	<select id="favoritesList" resultType="org.highfive.domain.UserBoardVO">
 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
@@ -39,5 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by b.bno desc, b.regdate desc
  	</select>
  	
+	<select id="isLike" resultType="int">
+		select fno from tbl_favorites where uid=#{uid} and bno=#{bno}
+	</select>
 
 </mapper>

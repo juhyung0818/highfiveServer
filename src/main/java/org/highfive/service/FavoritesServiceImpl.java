@@ -1,5 +1,6 @@
 package org.highfive.service;
 
+import java.awt.FontFormatException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,30 +16,43 @@ public class FavoritesServiceImpl implements FavoritesService{
 	@Inject
 	private FavoritesDAO fdao;
 	
+	@Override
+	public void isLike(FavoritesVO favorite) throws Exception {
+		int num = fdao.isLike(favorite);
+		String checkNum = null;
+		try{
+			checkNum.valueOf(num);
+			fdao.delete(num);
+		}catch(FontFormatException e){
+			fdao.regist(favorite);
+		}
+
+	}
+	
 	//좋아하는 게시글로 등록
 	@Override
-	public void regist(FavoritesVO favorite){
+	public void regist(FavoritesVO favorite) throws Exception{
 		fdao.regist(favorite);
 	}
 	
 	//좋아하는 게시글 목록에서 삭제
 	@Override
-	public void delete(int fno) {
+	public void delete(int fno) throws Exception{
 		fdao.delete(fno);
 	}
 
 	@Override
-	public List<UserBoardVO> favoritesList(String uid) {
+	public List<UserBoardVO> favoritesList(String uid) throws Exception{
 		return fdao.myFavoritesList(uid);
 	}
 
 	@Override
-	public List<UserBoardVO> myBoardList(String uid) {
+	public List<UserBoardVO> myBoardList(String uid) throws Exception{
 		return fdao.myBoardList(uid);
 	}
 
 	@Override
-	public List<UserBoardVO> myReplyList(String uid) {
+	public List<UserBoardVO> myReplyList(String uid) throws Exception{
 		return fdao.myReplyList(uid);
 	}
 }

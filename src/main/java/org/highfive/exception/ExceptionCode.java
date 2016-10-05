@@ -4,7 +4,8 @@ public enum ExceptionCode {
 
 	NONE(200, "success"),
 	USER_ID_DUPLICATE(100, "user id duplicated"),
-	INVALID_TYPE(300, "invalid type");
+	INVALID_TYPE(300, "invalid type"),
+	NOT_EXIST(400, "not exist");
 	
 	private int code;
 	private String message;

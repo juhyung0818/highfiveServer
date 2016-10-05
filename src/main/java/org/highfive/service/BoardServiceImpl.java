@@ -8,6 +8,7 @@ import org.highfive.domain.BoardVO;
 import org.highfive.domain.PageVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
+import org.highfive.exception.NotExistException;
 import org.highfive.persistence.BoardDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,9 +27,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Transactional
 	@Override
-	public BoardVO read(int bno) throws Exception {
-		dao.updateViewCnt(bno);
-		return dao.read(bno);
+	public BoardVO read(BoardVO board) throws Exception {
+		BoardVO temp = dao.read(board);
+		if(temp != null){
+			dao.updateViewCnt(board);
+			return temp;
+		}
+		throw new NotExistException();
 	}
 
 	@Override
@@ -48,12 +53,20 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception {
-		return dao.searchList(keyword);
+		List<UserBoardVO> list = dao.searchList(keyword);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 	@Override
 	public List<UserBoardVO> pageList(PageVO page) throws Exception {
-		return dao.pageList(page);
+		List<UserBoardVO> list = dao.pageList(page);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 	
 }

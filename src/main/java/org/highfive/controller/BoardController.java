@@ -40,8 +40,8 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value="/read", method=RequestMethod.POST)
 	public ResultVO<BoardVO> read(@RequestBody BoardVO board) throws Exception{
-		board = boardService.read(board.getBno());
-		logger.info(board.toString());
+		board = boardService.read(board);
+		logger.info("board read............ ");
 		return new ResultVO<>(board);
 	}
 	
@@ -76,7 +76,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO delete(@RequestBody BoardVO board) throws Exception{
-		logger.info(boardService.read(board.getBno()).toString());
+		logger.info(board.getBno() + "board delete....");
 		boardService.delete(board);
 		return new ResultVO();
 	}

@@ -28,7 +28,8 @@ public class HighfiveController {
 	@Inject
 	private HighfiveService hService;
 
-	//ÇÏÀÌÆÄÀÌºê µî·Ï
+	// register board
+	// flag=0 :  
 	@ResponseBody
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public ResultVO registPOST(@RequestBody HighfiveVO hf) throws Exception {
@@ -37,7 +38,7 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
-	//ÇÏÀÌÆÄÀÌºê »èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 	@ResponseBody
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResultVO deletePOST(@RequestBody HighfiveVO hf) throws Exception {
@@ -46,7 +47,6 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
-	//ÇÏÀÌÆÄÀÌºê¸¦ ÇÑ ¸ñ·Ï(accept)
 	@ResponseBody
 	@RequestMapping(value = "/highfiveList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> highfiveList(@RequestBody UserVO user) throws Exception {
@@ -56,7 +56,6 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
-	//ÇÏÀÌÆÄÀÌºê¸¦ º¸³½ ¸ñ·Ï
 	@ResponseBody
 	@RequestMapping(value = "/sendList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> sendList(@RequestBody UserVO user) throws Exception {
@@ -66,7 +65,6 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
-	//ÇÏÀÌÆÄÀÌºê¸¦ ¹ÞÀº ¸ñ·Ï
 	@ResponseBody
 	@RequestMapping(value = "/receiveList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> receiveList(@RequestBody UserVO user) throws Exception {
@@ -76,7 +74,6 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
-	//ÇÏÀÌÆÄÀÌºê ¼ö¶ô
 	@ResponseBody
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
 	public ResultVO accept(@RequestBody HighfiveVO hf) throws Exception {

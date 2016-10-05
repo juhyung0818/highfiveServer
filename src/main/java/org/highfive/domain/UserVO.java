@@ -3,7 +3,6 @@ package org.highfive.domain;
 public class UserVO {
 
 	private String uid;
-	private String upw;
 	private String uname;
 	private int age;
 	private String nation;
@@ -16,12 +15,6 @@ public class UserVO {
 	}
 	public void setUid(String uid) {
 		this.uid = uid;
-	}
-	public String getUpw() {
-		return upw;
-	}
-	public void setUpw(String upw) {
-		this.upw = upw;
 	}
 	public String getUname() {
 		return uname;
@@ -61,7 +54,7 @@ public class UserVO {
 	}
 	@Override
 	public String toString() {
-		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", age=" + age + ", nation=" + nation
+		return "UserVO [uid=" + uid + ", uname=" + uname + ", age=" + age + ", nation=" + nation
 				+ ", sex=" + sex + ", uphoto=" + uphoto + ", email=" + email + "]";
 	}
 }

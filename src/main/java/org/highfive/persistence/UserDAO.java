@@ -8,4 +8,6 @@ public interface UserDAO {
 	public UserVO read(String uid, int flag) throws Exception;
 	public void modify(UserVO user) throws Exception;
 	public void delete(String uid) throws Exception;
+	public String checkUser(UserVO user) throws Exception;
+	public String checkUname(UserVO user) throws Exception;
 }

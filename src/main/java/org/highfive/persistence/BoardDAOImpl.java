@@ -12,6 +12,7 @@ import org.highfive.domain.BoardVO;
 import org.highfive.domain.PageVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
+import org.highfive.exception.NotExistException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
 
@@ -37,8 +38,8 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public BoardVO read(int bno) throws Exception {
-		return session.selectOne(namespace+".read", bno);
+	public BoardVO read(BoardVO board) throws Exception {
+		return session.selectOne(namespace+".read", board.getBno());
 	}
 
 	@Override
@@ -68,8 +69,8 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public void updateViewCnt(int bno) throws Exception {
-		session.update(namespace+".updateViewCnt", bno);
+	public void updateViewCnt(BoardVO board) throws Exception {
+		session.update(namespace+".updateViewCnt", board.getBno());
 	}
 
 	@Override

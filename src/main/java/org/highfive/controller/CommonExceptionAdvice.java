@@ -2,6 +2,7 @@ package org.highfive.controller;
 
 import org.highfive.domain.ResultVO;
 import org.highfive.exception.InvalidTypeException;
+import org.highfive.exception.NotExistException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,11 +20,9 @@ public class CommonExceptionAdvice {
   public ResultVO highfiveException(UserIdDuplicatedException e) {
 
     logger.error(e.getMessage());
-    
     ResultVO result = new ResultVO();
     result.setCode(e.getExceptionCode().getCode()); //100 중복 id
     result.setMessage(e.getExceptionCode().getMessage());
-   
     return result;
   }
   
@@ -32,15 +31,24 @@ public class CommonExceptionAdvice {
   public ResultVO invalidFormatException(InvalidTypeException e) {
 
     logger.error(e.getMessage(), e.getStackTrace());
-    
     ResultVO result = new ResultVO();
     result.setCode(e.getExceptionCode().getCode()); //300 잘못된 타입
     result.setMessage(e.getExceptionCode().getMessage());
- 
     return result;
+    
   }
   
-//
+  @ResponseBody
+  @ExceptionHandler(NotExistException.class)
+  public ResultVO notExistException(NotExistException e) {
+	  
+	  logger.error(e.getMessage());
+	  ResultVO result = new ResultVO<>();
+	  result.setCode(e.getExceptionCode().getCode()); //300 잘못된 타입
+	  result.setMessage(e.getExceptionCode().getMessage());
+	 return result;
+  }
+  
 //  @ResponseBody
 //  @ExceptionHandler(Exception.class)
 //  public ResultVO common(Exception e) {

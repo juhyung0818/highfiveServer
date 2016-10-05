@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.highfive.mapper.UserMapper">
 
 	<insert id="regist">
-		insert into tbl_user (uid, upw, uname, age, nation, sex, email, uphoto)
-		values (#{uid}, #{upw}, #{uname}, #{age}, #{nation}, #{sex}, #{email}, #{uphoto})
+		insert into tbl_user (uid, uname, age, nation, sex, email, uphoto)
+		values (#{uid}, #{uname}, #{age}, #{nation}, #{sex}, #{email}, #{uphoto})
 	</insert>
 	
 	<select id="nomalRead" resultType="org.highfive.domain.UserVO">
@@ -28,4 +28,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete">
 		delete from tbl_user where uid=#{uid}
 	</delete>
+	
+	<select id="checkUser" resultType="String">
+		select uid from tbl_user where uid=#{uid}
+	</select>
+	
+	<select id="checkName" resultType="String">
+		select uname from tbl_user where uname=#{uname}
+	</select>
 </mapper>

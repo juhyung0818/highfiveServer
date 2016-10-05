@@ -26,28 +26,37 @@ public class FavoritesController {
 	@Inject
 	private FavoritesService fservice;
 	
+	
 	@ResponseBody
-	@RequestMapping(value="/regist", method=RequestMethod.POST)
-	public ResultVO registPOST(@RequestBody FavoritesVO favorite){
-		logger.info("favorites/" +favorite.toString());
-		fservice.regist(favorite);
+	@RequestMapping(value="/like", method=RequestMethod.POST)
+	public ResultVO like(@RequestBody FavoritesVO favorite) throws Exception{
+		logger.info("favorites... " +favorite.toString());
+		fservice.isLike(favorite);
 		return new ResultVO();
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ResultVO deletePOST(@RequestBody FavoritesVO favorite){
-		logger.info("favorites/delete...........");
-		fservice.delete(favorite.getFno());
-		return new ResultVO();
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/regist", method=RequestMethod.POST)
+//	public ResultVO registPOST(@RequestBody FavoritesVO favorite) throws Exception{
+//		logger.info("favorites/" +favorite.toString());
+//		fservice.regist(favorite);
+//		return new ResultVO();
+//	}
+//	
+//	@ResponseBody
+//	@RequestMapping(value="/delete", method=RequestMethod.POST)
+//	public ResultVO deletePOST(@RequestBody FavoritesVO favorite) throws Exception{
+//		logger.info("favorites/delete...........");
+//		fservice.delete(favorite.getFno());
+//		return new ResultVO();
+//	}
 
 	//좋아하는 게시글로 등록한 게시글 list
 	//@param "uid" : "~~"	@return list<UserBoardVO>
 	//url : favorites/bookmark
 	@ResponseBody
 	@RequestMapping(value = "/bookmark", method=RequestMethod.POST)
-	public ResultVO<List<UserBoardVO>> favoritesList(@RequestBody UserVO user){
+	public ResultVO<List<UserBoardVO>> favoritesList(@RequestBody UserVO user ) throws Exception{
 		logger.info("favorites list.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = fservice.favoritesList(user.getUid());
@@ -59,7 +68,7 @@ public class FavoritesController {
 	//url : favorites/myboard
 	@ResponseBody
 	@RequestMapping(value = "/myboard", method=RequestMethod.POST)
-	public ResultVO<List<UserBoardVO>> myBoardList(@RequestBody UserVO user){
+	public ResultVO<List<UserBoardVO>> myBoardList(@RequestBody UserVO user) throws Exception{
 		logger.info("My Board list.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = fservice.myBoardList(user.getUid());
@@ -71,7 +80,7 @@ public class FavoritesController {
 	//url : favorites/myreply
 	@ResponseBody
 	@RequestMapping(value = "/myreply", method=RequestMethod.POST)
-	public ResultVO<List<UserBoardVO>> myReplyList(@RequestBody UserVO user){
+	public ResultVO<List<UserBoardVO>> myReplyList(@RequestBody UserVO user) throws Exception{
 		logger.info("My Reply list.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = fservice.myReplyList(user.getUid());
