@@ -8,6 +8,7 @@ import org.highfive.domain.ReplyVO;
 import org.highfive.domain.UserReplyVO;
 import org.highfive.persistence.BoardDAO;
 import org.highfive.persistence.ReplyDAO;
+import org.junit.runner.manipulation.NoTestsRemainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,7 +41,17 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public List<UserReplyVO> list(int bno) throws Exception {
-		return replyDao.list(bno);
+		int temp=0;
+		temp=replyDao.getBno(bno);
+		if(temp!=0)
+		{
+			return replyDao.list(bno);
+		}
+		else
+		{
+			throw new NoTestsRemainException();
+		}
+		//return replyDao.list(bno);
 	}
 
 }
