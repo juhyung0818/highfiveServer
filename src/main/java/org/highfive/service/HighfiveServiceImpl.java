@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-
 public class HighfiveServiceImpl implements HighfiveService {
 
 	@Inject
@@ -27,7 +26,9 @@ public class HighfiveServiceImpl implements HighfiveService {
 
 	@Transactional
 	@Override
+
 	public void delete(HighfiveVO hf) throws Exception {
+
 		hfDao.delete(hf);
 		hfDao.delete(swapUser(hf));
 	}
@@ -40,6 +41,7 @@ public class HighfiveServiceImpl implements HighfiveService {
 	@Transactional
 	@Override
 	public void accept(HighfiveVO hf) throws Exception {
+
 		hfDao.accept(hf);
 		hfDao.accept(swapUser(hf));
 	}

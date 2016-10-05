@@ -5,6 +5,7 @@ import java.util.List;
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
 
+
 public interface HighfiveService {
 
 	public void regist(HighfiveVO hf) throws Exception;

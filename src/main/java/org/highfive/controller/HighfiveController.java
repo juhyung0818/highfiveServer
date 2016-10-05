@@ -28,6 +28,7 @@ public class HighfiveController {
 	@Inject
 	private HighfiveService hService;
 
+	//하이파이브 등록
 	@ResponseBody
 	@RequestMapping(value = "/regist", method = RequestMethod.POST)
 	public ResultVO registPOST(@RequestBody HighfiveVO hf) throws Exception {
@@ -36,6 +37,7 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
+	//하이파이브 삭제
 	@ResponseBody
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResultVO deletePOST(@RequestBody HighfiveVO hf) throws Exception {
@@ -44,6 +46,7 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
+	//하이파이브를 한 목록(accept)
 	@ResponseBody
 	@RequestMapping(value = "/highfiveList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> highfiveList(@RequestBody UserVO user) throws Exception {
@@ -53,6 +56,7 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
+	//하이파이브를 보낸 목록
 	@ResponseBody
 	@RequestMapping(value = "/sendList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> sendList(@RequestBody UserVO user) throws Exception {
@@ -62,6 +66,7 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
+	//하이파이브를 받은 목록
 	@ResponseBody
 	@RequestMapping(value = "/receiveList", method = RequestMethod.POST)
 	public ResultVO<List<UserVO>> receiveList(@RequestBody UserVO user) throws Exception {
@@ -71,6 +76,7 @@ public class HighfiveController {
 		return new ResultVO<>(users);
 	}
 
+	//하이파이브 수락
 	@ResponseBody
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
 	public ResultVO accept(@RequestBody HighfiveVO hf) throws Exception {

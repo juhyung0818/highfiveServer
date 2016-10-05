@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.highfive.mapper.UserMapper">
 
 	<insert id="regist">
-		insert into tbl_user (uid, uname, age, nation, sex, uphoto, email, upw)
-		values (#{uid}, #{uname}, #{age}, #{nation}, #{sex}, #{uphoto}, #{email}, #{upw})
+		insert into tbl_user (uid, upw, uname, age, nation, sex, email, uphoto)
+		values (#{uid}, #{upw}, #{uname}, #{age}, #{nation}, #{sex}, #{email}, #{uphoto})
 	</insert>
 	
 	<select id="nomalRead" resultType="org.highfive.domain.UserVO">

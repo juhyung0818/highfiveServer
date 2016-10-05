@@ -34,15 +34,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserVO read(String uid, int flag) throws Exception {
-
 		if (flag == 0) {
 			return session.selectOne(namespace + ".hiRead", uid);
 		} else {
 			return session.selectOne(namespace + ".nomalRead", uid);
 		}
-
 	}
-
+	
 	@Override
 	public void modify(UserVO user) throws Exception {
 		session.update(namespace + ".modify");

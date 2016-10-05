@@ -43,6 +43,7 @@ public class UserController {
 		} catch(NullPointerException e){
 			flag = 1;
 		}
+
 		UserVO user = new UserVO();
 		user = userService.read(hf.getReceiver(), flag);
 		logger.info(user.toString());
