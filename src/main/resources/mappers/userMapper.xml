@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where uid=#{uid}
 	</update>
 	
+	<!-- self delete -->
 	<delete id="delete">
 		delete from tbl_user where uid=#{uid}
 	</delete>
@@ -33,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select uid from tbl_user where uid=#{uid}
 	</select>
 	
-	<select id="checkName" resultType="String">
+	<select id="checkUname" resultType="String">
 		select uname from tbl_user where uname=#{uname}
 	</select>
 </mapper>

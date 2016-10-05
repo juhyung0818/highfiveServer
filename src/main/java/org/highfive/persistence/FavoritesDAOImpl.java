@@ -24,7 +24,7 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("uid", favorites.getUid());
 		paramMap.put("bno", favorites.getBno());
-		return session.selectOne(namespace + ".isLike", favorites);
+		return session.selectOne(namespace + ".isLike", paramMap);
 	}
 	
 	//좋아하는 게시글목록에 등록

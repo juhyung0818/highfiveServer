@@ -1,6 +1,6 @@
 package org.highfive.service;
 
-import java.awt.FontFormatException;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -19,14 +19,13 @@ public class FavoritesServiceImpl implements FavoritesService{
 	@Override
 	public void isLike(FavoritesVO favorite) throws Exception {
 		int num = fdao.isLike(favorite);
-		String checkNum = null;
+		String check = null;
 		try{
-			checkNum.valueOf(num);
+			check.valueOf(num);
 			fdao.delete(num);
-		}catch(FontFormatException e){
+		} catch(FormatFlagsConversionMismatchException e){
 			fdao.regist(favorite);
 		}
-
 	}
 	
 	//좋아하는 게시글로 등록

@@ -16,8 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</insert>
 
  	<insert id="delete">
- 		delete from tbl_favorites (uid, bno)
- 		values (#{uid}, #{bno})
+ 		delete from tbl_favorites where uid=#{uid} and bno = #{bno}
  	</insert>
  	
  	<select id="favoritesList" resultType="org.highfive.domain.UserBoardVO">
