@@ -33,7 +33,6 @@ public class ReplyDAOImpl implements ReplyDAO{
 
 	@Override
 	public void delete(int rno) throws Exception {
-		//TODO add parameter (string)uid
 		session.delete(namespace+".delete", rno);
 	}
 
