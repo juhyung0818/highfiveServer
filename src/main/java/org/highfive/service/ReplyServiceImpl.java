@@ -51,7 +51,6 @@ public class ReplyServiceImpl implements ReplyService{
 		{
 			throw new NoTestsRemainException();
 		}
-		//return replyDao.list(bno);
 	}
 
 }

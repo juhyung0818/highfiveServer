@@ -43,8 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by b.bno desc, b.regdate desc
  	</select>
  	
-	<select id="isLike" resultType="int">
-		select fno from tbl_favorites where uid=#{uid} and bno=#{bno}
+	<select id="isLike" resultType="org.highfive.domain.FavoritesVO">
+		select * from tbl_favorites where uid=#{uid} and bno=#{bno}
 	</select>
 
 </mapper>

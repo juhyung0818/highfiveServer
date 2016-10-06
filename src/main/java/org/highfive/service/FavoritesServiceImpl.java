@@ -1,6 +1,5 @@
 package org.highfive.service;
 
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,12 +17,10 @@ public class FavoritesServiceImpl implements FavoritesService{
 	
 	@Override
 	public void isLike(FavoritesVO favorite) throws Exception {
-		int num = fdao.isLike(favorite);
-		String check = null;
-		try{
-			check.valueOf(num);
-			fdao.delete(num);
-		} catch(FormatFlagsConversionMismatchException e){
+		FavoritesVO temp = fdao.isLike(favorite);
+		if(temp != null){
+			fdao.delete(favorite);
+		} else {
 			fdao.regist(favorite);
 		}
 	}
@@ -36,8 +33,8 @@ public class FavoritesServiceImpl implements FavoritesService{
 	
 	//좋아하는 게시글 목록에서 삭제
 	@Override
-	public void delete(int fno) throws Exception{
-		fdao.delete(fno);
+	public void delete(FavoritesVO favorite) throws Exception{
+		fdao.delete(favorite);
 	}
 
 	@Override
