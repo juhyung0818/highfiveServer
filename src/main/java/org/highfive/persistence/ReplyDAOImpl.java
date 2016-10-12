@@ -1,6 +1,8 @@
 package org.highfive.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,8 +34,11 @@ public class ReplyDAOImpl implements ReplyDAO{
 	}
 
 	@Override
-	public void delete(int rno) throws Exception {
-		session.delete(namespace+".delete", rno);
+	public void delete(ReplyVO reply) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("rno", reply.getRno());
+		paramMap.put("uid", reply.getUid());
+		session.delete(namespace+".delete", paramMap);
 	}
 
 	@Override

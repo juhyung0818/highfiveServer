@@ -45,7 +45,7 @@ public class ReplyController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ResultVO delete(@RequestBody ReplyVO reply) throws Exception{
 		logger.info("delete.....");
-		replyService.delete(reply.getRno());
+		replyService.delete(reply);
 		return new ResultVO();
 	}
 }

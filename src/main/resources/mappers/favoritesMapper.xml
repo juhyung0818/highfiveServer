@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<select id="myReplyList" resultType="org.highfive.domain.UserBoardVO">
- 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		select DISTINCT b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u join tbl_reply as r
  		on b.writer=u.uid
  		where r.bno=b.bno and r.uid=#{uid}

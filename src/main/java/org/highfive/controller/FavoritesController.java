@@ -35,6 +35,8 @@ public class FavoritesController {
 		return new ResultVO();
 	}
 	
+	
+	// regist favorite board
 //	@ResponseBody
 //	@RequestMapping(value="/regist", method=RequestMethod.POST)
 //	public ResultVO registPOST(@RequestBody FavoritesVO favorite) throws Exception{
@@ -43,6 +45,7 @@ public class FavoritesController {
 //		return new ResultVO();
 //	}
 //	
+	// delete favorite board
 //	@ResponseBody
 //	@RequestMapping(value="/delete", method=RequestMethod.POST)
 //	public ResultVO deletePOST(@RequestBody FavoritesVO favorite) throws Exception{
