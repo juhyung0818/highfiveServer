@@ -1,6 +1,6 @@
 package org.highfive.domain;
 
-public class SearchKeyword {
+public class SearchKeyword extends PageVO{
 
 	private String keyword;
 	private int flag;

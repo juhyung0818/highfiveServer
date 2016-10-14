@@ -8,8 +8,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  <br>
-	온라인 시험 및 성적 관리 웹
+	Highfive!!  <br>
+	Hell world! This program is very good!!
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P> <br>

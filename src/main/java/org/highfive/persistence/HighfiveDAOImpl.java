@@ -48,11 +48,10 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 
 	@Override
 	public int highfiveCheck(HighfiveVO hf) throws Exception {
-		int temp = session.selectOne(namespace + ".highfiveCheck", hf);
 		try{
-			return temp;
+			return session.selectOne(namespace + ".highfiveCheck", hf);
 		}catch(NullPointerException e){
-			throw new NotExistException();
+			return 3;
 		}
 	}
 }

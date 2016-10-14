@@ -51,17 +51,29 @@ public class HighfiveServiceImpl implements HighfiveService {
 
 	@Override
 	public List<UserVO> highfiveList(HighfiveVO hf) throws Exception {
-		return hfDao.highfiveList(hf);
+		List<UserVO> list = hfDao.highfiveList(hf);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 	@Override
 	public List<UserVO> sendList(HighfiveVO hf) throws Exception {
-		return hfDao.sendList(hf);
+		List<UserVO> list = hfDao.sendList(hf);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 	@Override
 	public List<UserVO> receiveList(HighfiveVO hf) throws Exception {
-		return hfDao.receiveList(hf);
+		List<UserVO> list = hfDao.receiveList(hf);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 	@Override

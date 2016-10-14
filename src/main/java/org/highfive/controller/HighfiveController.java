@@ -81,6 +81,7 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
+	//prohibit for duplication to register
 	@ResponseBody
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
 	public ResultVO check(@RequestBody HighfiveVO hf) throws Exception {

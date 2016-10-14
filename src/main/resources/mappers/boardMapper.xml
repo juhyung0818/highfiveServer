@@ -47,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on b.writer=u.uid
  		where (b.title like CONCAT('%', #{keyword}, '%') OR b.content like CONCAT('%', #{keyword}, '%')) and flag=#{flag}
  		order by b.bno desc, b.regdate desc
+ 		limit #{page}, #{perPageNum}
 	</select>
 	
 	<select id="pageList" resultType="org.highfive.domain.UserBoardVO">
