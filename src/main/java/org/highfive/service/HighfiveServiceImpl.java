@@ -52,6 +52,7 @@ public class HighfiveServiceImpl implements HighfiveService {
 	@Override
 	public List<UserVO> highfiveList(HighfiveVO hf) throws Exception {
 		List<UserVO> list = hfDao.highfiveList(hf);
+		System.out.println("asdifjasijfiajsfijasifiajsdijsaidjfijsaijfisafijsaifiasjfdiajs" + list.size());
 		if(list.size() != 0){
 			return list;
 		}

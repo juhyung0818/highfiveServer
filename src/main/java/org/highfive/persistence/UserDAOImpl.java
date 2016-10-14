@@ -4,6 +4,8 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.UserVO;
+import org.highfive.exception.PrimaryKeyDuplicatedException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,7 +17,11 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void regist(UserVO user) {
-		session.insert(namespace + ".regist", user);
+		try{
+			session.insert(namespace + ".regist", user);
+		}catch(DuplicateKeyException e){
+			throw new PrimaryKeyDuplicatedException();
+		}
 	}
 
 	@Override

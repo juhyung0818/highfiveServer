@@ -1,14 +1,16 @@
 package org.highfive.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.HighfiveVO;
-
 import org.highfive.domain.UserVO;
-import org.highfive.exception.NotExistException;
+import org.highfive.exception.PrimaryKeyDuplicatedException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -19,7 +21,11 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 	private static String namespace="org.highfive.mapper.HighfiveMapper";
 
 	public void regist(HighfiveVO hf) {
-		session.insert(namespace+".regist", hf);
+		try{
+			session.insert(namespace+".regist", hf);
+		}catch(DuplicateKeyException e){
+			throw new PrimaryKeyDuplicatedException();
+		}
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller

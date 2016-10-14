@@ -26,7 +26,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@ResponseBody
-	@RequestMapping(value="/regist", method=RequestMethod.POST)
+	@RequestMapping(value="/regis", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody UserVO user) throws Exception{
 		logger.info("register post.......");
 		userService.regist(user);

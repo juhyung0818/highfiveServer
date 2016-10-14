@@ -6,17 +6,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.BoardVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
-import org.highfive.exception.NotExistException;
-import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
 
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -27,14 +22,7 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	@Override
 	public void regist(BoardVO vo) throws Exception {
-		try{
-			session.insert(namespace+".regist", vo);
-		} catch(PersistenceException e){
-			if(e.getCause() instanceof MySQLIntegrityConstraintViolationException){
-				throw new UserIdDuplicatedException();				
-			}
-			throw new RuntimeException();
-		}
+		session.insert(namespace+".regist", vo);
 	}
 
 	@Override
@@ -75,11 +63,6 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-//		paramMap.put("keyword", keyword.getKeyword());
-//		paramMap.put("flag", keyword.getFlag());
-//		paramMap.put("page", keyword.getPage());
-//		paramMap.put("pagePerNum", keyword.getPerPageNum());
 		return session.selectList(namespace+".searchList", keyword);
 	}
 

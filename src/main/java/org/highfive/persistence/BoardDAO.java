@@ -3,7 +3,6 @@ package org.highfive.persistence;
 import java.util.List;
 
 import org.highfive.domain.BoardVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
 
