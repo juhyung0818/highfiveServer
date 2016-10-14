@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
 import org.springframework.stereotype.Repository;
 
@@ -44,8 +45,12 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 
 	//좋아하는 게시글 목록
 	@Override
-	public List<UserBoardVO> myFavoritesList(String uid) throws Exception{
-		return session.selectList(namespace + ".favoritesList", uid);
+	public List<UserBoardVO> myFavoritesList(PageVO page, String uid) throws Exception{
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", uid);
+		paramMap.put("page", page.getPage());
+		paramMap.put("pagePerNum", page.getPerPageNum());
+		return session.selectList(namespace + ".favoritesList", paramMap);
 	}
 
 	//내가 작성한 게시글 목록

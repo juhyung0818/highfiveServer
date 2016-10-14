@@ -2,16 +2,9 @@ package org.highfive.domain;
 
 public class FavoritesVO {
 
-	private int fno;
 	private String uid;
 	private int bno;
 	
-	public int getFno() {
-		return fno;
-	}
-	public void setFno(int fno) {
-		this.fno = fno;
-	}
 	public String getUid() {
 		return uid;
 	}
@@ -26,6 +19,6 @@ public class FavoritesVO {
 	}
 	@Override
 	public String toString() {
-		return "FavoritesVO [fno=" + fno + ", uid=" + uid + ", bno=" + bno + "]";
+		return "FavoritesVO [uid=" + uid + ", bno=" + bno + "]";
 	}
 }

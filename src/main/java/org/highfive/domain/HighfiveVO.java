@@ -2,7 +2,7 @@ package org.highfive.domain;
 
 import java.util.Date;
 
-public class HighfiveVO {
+public class HighfiveVO extends PageVO{
 		
 	private String receiver;
 	private String sender;

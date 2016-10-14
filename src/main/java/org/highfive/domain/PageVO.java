@@ -7,11 +7,11 @@ public class PageVO {
 	private int perPageNum; //number of board 
 
 	PageVO(){
-		perPageNum = 10;
+		perPageNum = 3;
 	}
 	
 	public int getPage() {
-		return page;
+		return page * perPageNum;
 	}
 
 	public void setPage(int page) {

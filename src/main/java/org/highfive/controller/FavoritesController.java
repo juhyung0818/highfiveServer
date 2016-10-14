@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -40,10 +42,10 @@ public class FavoritesController {
 	//url : favorites/bookmark
 	@ResponseBody
 	@RequestMapping(value = "/bookmark", method=RequestMethod.POST)
-	public ResultVO<List<UserBoardVO>> favoritesList(@RequestBody UserVO user ) throws Exception{
+	public ResultVO<List<UserBoardVO>> favoritesList(@RequestParam("uid") String uid, @RequestBody PageVO page) throws Exception{
 		logger.info("favorites list.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
-		list = fservice.favoritesList(user.getUid());
+		list = fservice.favoritesList(page, uid);
 		return new ResultVO<>(list);
 	}
 	
