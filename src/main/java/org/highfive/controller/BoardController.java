@@ -84,10 +84,10 @@ public class BoardController {
 	//host/board/pageList
 	@ResponseBody
 	@RequestMapping(value="/pageList", method=RequestMethod.POST)
-	public ResultVO<List<UserBoardVO>> pageList(@RequestBody PageVO page) throws Exception{
+	public ResultVO<List<UserBoardVO>> pageList(@RequestBody BoardVO board) throws Exception{
 		logger.info("board pageList.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
-		list = boardService.pageList(page);
+		list = boardService.pageList(board);
 		return new ResultVO<>(list);
 	}
 }

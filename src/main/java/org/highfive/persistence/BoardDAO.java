@@ -17,6 +17,6 @@ public interface BoardDAO {
 	public void updateReplyCnt(int bno, int amount) throws Exception;
 	public void updateViewCnt(BoardVO board) throws Exception;
 	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception;
-	public List<UserBoardVO> pageList(PageVO page) throws Exception;
+	public List<UserBoardVO> pageList(BoardVO board) throws Exception;
 	
 }

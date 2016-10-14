@@ -34,25 +34,6 @@ public class FavoritesController {
 		fservice.isLike(favorite);
 		return new ResultVO();
 	}
-	
-	
-	// regist favorite board
-//	@ResponseBody
-//	@RequestMapping(value="/regist", method=RequestMethod.POST)
-//	public ResultVO registPOST(@RequestBody FavoritesVO favorite) throws Exception{
-//		logger.info("favorites/" +favorite.toString());
-//		fservice.regist(favorite);
-//		return new ResultVO();
-//	}
-//	
-	// delete favorite board
-//	@ResponseBody
-//	@RequestMapping(value="/delete", method=RequestMethod.POST)
-//	public ResultVO deletePOST(@RequestBody FavoritesVO favorite) throws Exception{
-//		logger.info("favorites/delete...........");
-//		fservice.delete(favorite.getFno());
-//		return new ResultVO();
-//	}
 
 	//좋아하는 게시글로 등록한 게시글 list
 	//@param "uid" : "~~"	@return list<UserBoardVO>
