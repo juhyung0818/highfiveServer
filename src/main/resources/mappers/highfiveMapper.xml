@@ -13,11 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete">
  		delete from tbl_highfive where receiver=#{receiver} and sender=#{sender}
  	</delete>
- 	
-<!--  	 <select id = "getFlag" resultType="int">
- 		select flag from tbl_highfive where receiver=#{receiver} and sender=#{sender}
- 	</select> -->
- 	
+
  	<update id="accept">
  		update tbl_highfive set flag=0
  		where receiver=#{receiver} and sender=#{sender}

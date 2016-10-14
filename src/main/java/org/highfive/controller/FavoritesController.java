@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
@@ -34,27 +35,7 @@ public class FavoritesController {
 		fservice.isLike(favorite);
 		return new ResultVO();
 	}
-	
-	
-	// regist favorite board
-//	@ResponseBody
-//	@RequestMapping(value="/regist", method=RequestMethod.POST)
-//	public ResultVO registPOST(@RequestBody FavoritesVO favorite) throws Exception{
-//		logger.info("favorites/" +favorite.toString());
-//		fservice.regist(favorite);
-//		return new ResultVO();
-//	}
-//	
-	// delete favorite board
-//	@ResponseBody
-//	@RequestMapping(value="/delete", method=RequestMethod.POST)
-//	public ResultVO deletePOST(@RequestBody FavoritesVO favorite) throws Exception{
-//		logger.info("favorites/delete...........");
-//		fservice.delete(favorite.getFno());
-//		return new ResultVO();
-//	}
 
-	//좋아하는 게시글로 등록한 게시글 list
 	//@param "uid" : "~~"	@return list<UserBoardVO>
 	//url : favorites/bookmark
 	@ResponseBody
@@ -66,7 +47,6 @@ public class FavoritesController {
 		return new ResultVO<>(list);
 	}
 	
-	//내가 작성한 게시글 list
 	//@param "uid" : "~~"	@return list<UserBoardVO>
 	//url : favorites/myboard
 	@ResponseBody
@@ -78,7 +58,6 @@ public class FavoritesController {
 		return new ResultVO<>(list);
 	}
 	
-	//내가 댓글을 쓴 게시글 list
 	//@param "uid" : "~~"	@return list<UserBoardVO>
 	//url : favorites/myreply
 	@ResponseBody
@@ -89,5 +68,4 @@ public class FavoritesController {
 		list = fservice.myReplyList(user.getUid());
 		return new ResultVO<>(list);
 	}
-	
 }
