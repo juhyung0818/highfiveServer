@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.highfive.domain.BoardVO;
 import org.highfive.domain.ReplyVO;
 import org.highfive.domain.ResultVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserReplyVO;
 import org.highfive.service.ReplyService;
 import org.slf4j.Logger;
@@ -47,5 +49,13 @@ public class ReplyController {
 		logger.info("delete.....");
 		replyService.delete(reply);
 		return new ResultVO();
+	}
+	@ResponseBody
+	@RequestMapping(value="/pageList", method=RequestMethod.POST)
+	public ResultVO<List<UserReplyVO>> pageList(@RequestBody ReplyVO reply) throws Exception{
+		logger.info("reply pageList.....");
+		List<UserReplyVO> list = new ArrayList<UserReplyVO>();
+		list = replyService.pageList(reply);
+		return new ResultVO<>(list);
 	}
 }

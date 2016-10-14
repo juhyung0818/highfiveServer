@@ -1,6 +1,6 @@
 package org.highfive.domain;
 
-public class UserVO {
+public class UserVO extends PageVO{
 
 	private String uid;
 	private String uname;

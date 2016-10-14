@@ -2,7 +2,7 @@ package org.highfive.domain;
 
 import java.util.Date;
 
-public class ReplyVO {
+public class ReplyVO extends PageVO{
 
 	private Integer rno;
 	private Integer bno;

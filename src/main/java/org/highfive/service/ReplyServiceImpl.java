@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.ReplyVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserReplyVO;
 import org.highfive.exception.NotExistException;
 import org.highfive.persistence.BoardDAO;
@@ -51,6 +52,15 @@ public class ReplyServiceImpl implements ReplyService{
 		{
 			throw new NotExistException();
 		}
+	}
+
+	@Override
+	public List<UserReplyVO> pageList(ReplyVO reply) throws Exception {
+		List<UserReplyVO> list = replyDao.pageList(reply);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 }

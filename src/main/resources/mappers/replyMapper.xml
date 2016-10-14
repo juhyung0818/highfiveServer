@@ -30,5 +30,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id = "getBno" resultType="int">
  		select bno from tbl_reply where rno = #{rno}
  	</select>
-		
+	
+	<select id="pageList" resultType="org.highfive.domain.UserReplyVO">
+		select u.uid, u.uname, u.uphoto, r.rno, r.bno, r.content, r.regdate
+ 		from tbl_reply as r join tbl_user as u
+ 		on r.uid=u.uid
+ 		where r.bno=#{bno}
+		limit #{page}, #{perPageNum}
+
+	</select>
 </mapper>

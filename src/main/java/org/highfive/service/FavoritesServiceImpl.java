@@ -5,7 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
+import org.highfive.domain.UserVO;
 import org.highfive.persistence.FavoritesDAO;
 import org.springframework.stereotype.Service;
 
@@ -38,17 +40,17 @@ public class FavoritesServiceImpl implements FavoritesService{
 	}
 
 	@Override
-	public List<UserBoardVO> favoritesList(String uid) throws Exception{
-		return fdao.myFavoritesList(uid);
+	public List<UserBoardVO> favoritesList(UserVO user)throws Exception{
+		return fdao.myFavoritesList(user);
 	}
 
 	@Override
-	public List<UserBoardVO> myBoardList(String uid) throws Exception{
-		return fdao.myBoardList(uid);
+	public List<UserBoardVO> myBoardList(UserVO user) throws Exception{
+		return fdao.myBoardList(user);
 	}
 
 	@Override
-	public List<UserBoardVO> myReplyList(String uid) throws Exception{
-		return fdao.myReplyList(uid);
+	public List<UserBoardVO> myReplyList(UserVO user) throws Exception{
+		return fdao.myReplyList(user);
 	}
 }

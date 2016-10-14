@@ -8,7 +8,9 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.FavoritesVO;
+import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
+import org.highfive.domain.UserVO;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -44,19 +46,31 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 
 	//좋아하는 게시글 목록
 	@Override
-	public List<UserBoardVO> myFavoritesList(String uid) throws Exception{
-		return session.selectList(namespace + ".favoritesList", uid);
+	public List<UserBoardVO> myFavoritesList(UserVO user) throws Exception{
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", user.getUid());
+		paramMap.put("page", user.getPage());
+		paramMap.put("perPageNum", user.getPerPageNum());
+		return session.selectList(namespace + ".favoritesList", paramMap);
 	}
 
 	//내가 작성한 게시글 목록
 	@Override
-	public List<UserBoardVO> myBoardList(String uid) throws Exception{
-		return session.selectList(namespace + ".myBoardList", uid);
+	public List<UserBoardVO> myBoardList(UserVO user) throws Exception{
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", user.getUid());
+		paramMap.put("page", user.getPage());
+		paramMap.put("perPageNum", user.getPerPageNum());
+		return session.selectList(namespace + ".myBoardList", paramMap);
 	}
 
 	//내가 댓글을 작성한 게시글 목록
 	@Override
-	public List<UserBoardVO> myReplyList(String uid) throws Exception{
-		return session.selectList(namespace + ".myReplyList", uid);
+	public List<UserBoardVO> myReplyList(UserVO user) throws Exception{
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", user.getUid());
+		paramMap.put("page", user.getPage());
+		paramMap.put("perPageNum", user.getPerPageNum());
+		return session.selectList(namespace + ".myReplyList", paramMap);
 	}
 }

@@ -14,7 +14,9 @@ public class BoardVO extends PageVO{
 	private int viewcnt;
 	private int replycnt;
 	private String language;
-	private int flag;
+	//korean : 1
+	//foreign : 0
+	private int flag; 
 
 	public int getBno() {
 		return bno;

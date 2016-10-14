@@ -11,7 +11,7 @@ public class PageVO {
 	}
 	
 	public int getPage() {
-		return page;
+		return page*perPageNum;
 	}
 
 	public void setPage(int page) {

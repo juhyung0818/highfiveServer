@@ -7,7 +7,9 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.highfive.domain.BoardVO;
 import org.highfive.domain.ReplyVO;
+import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserReplyVO;
 import org.springframework.stereotype.Repository;
 
@@ -46,5 +48,11 @@ public class ReplyDAOImpl implements ReplyDAO{
 		return session.selectOne(namespace+".getBno", rno);
 	}
 
-	
+	@Override
+	public List<UserReplyVO> pageList(ReplyVO reply) throws Exception {
+		//Map<String, Object> paramMap = new HashMap<String, Object>();
+//		paramMap.put("page", reply.getPage());
+//		paramMap.put("perPageNum", reply.getPerPageNum());
+		return session.selectList(namespace + ".pageList", reply);
+	}
 }

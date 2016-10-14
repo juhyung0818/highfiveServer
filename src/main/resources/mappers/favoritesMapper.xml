@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on b.writer=u.uid
  		where b.bno=f.bno and f.uid=#{uid}
  		order by b.bno desc, b.regdate desc
+ 		limit #{page}, #{perPageNum}
  	</select>
  	
  	<select id="myBoardList" resultType="org.highfive.domain.UserBoardVO">
@@ -33,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on b.writer=u.uid
  		where b.writer=#{uid}
  		order by b.bno desc, b.regdate desc
+ 		limit #{page}, #{perPageNum}
  	</select>
  	
  	<select id="myReplyList" resultType="org.highfive.domain.UserBoardVO">
@@ -41,6 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on b.writer=u.uid
  		where r.bno=b.bno and r.uid=#{uid}
  		order by b.bno desc, b.regdate desc
+ 		limit #{page}, #{perPageNum}
  	</select>
  	
 	<select id="isLike" resultType="org.highfive.domain.FavoritesVO">

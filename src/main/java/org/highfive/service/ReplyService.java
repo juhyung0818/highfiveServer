@@ -11,4 +11,5 @@ public interface ReplyService {
 	public void modify(ReplyVO reply) throws Exception;
 	public void delete(ReplyVO reply) throws Exception;
 	public List<UserReplyVO> list(int bno) throws Exception;
+	public List<UserReplyVO> pageList(ReplyVO reply) throws Exception;
 }
