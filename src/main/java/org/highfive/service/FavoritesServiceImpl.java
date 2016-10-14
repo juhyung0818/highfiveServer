@@ -1,9 +1,7 @@
 package org.highfive.service;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.highfive.domain.FavoritesVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;

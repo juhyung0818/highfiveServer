@@ -76,9 +76,11 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("keyword", keyword.getKeyword());
-		paramMap.put("flag", keyword.getFlag());
-		return session.selectList(namespace+".searchList", paramMap);
+//		paramMap.put("keyword", keyword.getKeyword());
+//		paramMap.put("flag", keyword.getFlag());
+//		paramMap.put("page", keyword.getPage());
+//		paramMap.put("pagePerNum", keyword.getPerPageNum());
+		return session.selectList(namespace+".searchList", keyword);
 	}
 
 	@Override
