@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.HighfiveVO;
 
 import org.highfive.domain.UserVO;
-
+import org.highfive.exception.NotExistException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -27,10 +27,10 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 		session.delete(namespace+".delete", hf);
 	}
 
-	@Override
-	public int getFlag(HighfiveVO hf) throws Exception {
-		return session.selectOne(namespace+".getFlag", hf);
-	}
+//	@Override
+//	public int getFlag(HighfiveVO hf) throws Exception {
+//		return session.selectOne(namespace+".getFlag", hf);
+//	}
 
 	public void accept(HighfiveVO hf) {
 		session.update(namespace+".accept", hf);
@@ -49,5 +49,15 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 	@Override
 	public List<UserVO> receiveList(String uid) throws Exception {
 		return session.selectList(namespace+".receiveList", uid);
+	}
+
+	@Override
+	public int highfiveCheck(HighfiveVO hf) throws Exception {
+		int temp = session.selectOne(namespace + ".highfiveCheck", hf);
+		try{
+			return temp;
+		}catch(NullPointerException e){
+			throw new NotExistException();
+		}
 	}
 }

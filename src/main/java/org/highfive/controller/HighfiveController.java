@@ -81,4 +81,10 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/check", method = RequestMethod.POST)
+	public ResultVO check(@RequestBody HighfiveVO hf) throws Exception {
+		logger.info("highfive/check......");
+		return new ResultVO<>(hService.highfiveCheck(hf));
+	}
 }

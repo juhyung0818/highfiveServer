@@ -9,7 +9,6 @@ import org.highfive.domain.UserReplyVO;
 import org.highfive.exception.NotExistException;
 import org.highfive.persistence.BoardDAO;
 import org.highfive.persistence.ReplyDAO;
-import org.junit.runner.manipulation.NoTestsRemainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

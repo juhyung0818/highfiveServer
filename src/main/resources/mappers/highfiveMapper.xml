@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from tbl_highfive where receiver=#{receiver} and sender=#{sender}
  	</delete>
  	
- 	 <select id = "getFlag" resultType="int">
+<!--  	 <select id = "getFlag" resultType="int">
  		select flag from tbl_highfive where receiver=#{receiver} and sender=#{sender}
- 	</select>
+ 	</select> -->
  	
  	<update id="accept">
  		update tbl_highfive set flag=0
@@ -47,7 +47,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by h.senddate desc
  	</select>
 
-
+	<select id="highfiveCheck" resultType="int">
+		select flag from tbl_highfive
+		where sender=#{sender} and receiver=#{receiver} 
+	</select>
 
 
 </mapper>

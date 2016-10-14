@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.highfive.domain.HighfiveVO;
 import org.highfive.domain.UserVO;
+import org.highfive.exception.NotExistException;
 import org.highfive.persistence.HighfiveDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,15 +34,14 @@ public class HighfiveServiceImpl implements HighfiveService {
 		hfDao.delete(swapUser(hf));
 	}
 
-	@Override
-	public int getFlag(HighfiveVO hf) throws Exception {
-		return hfDao.getFlag(hf);
-	}
+//	@Override
+//	public int getFlag(HighfiveVO hf) throws Exception {
+//		return hfDao.getFlag(hf);
+//	}
 
 	@Transactional
 	@Override
 	public void accept(HighfiveVO hf) throws Exception {
-
 		hfDao.accept(hf);
 		hfDao.accept(swapUser(hf));
 	}
@@ -67,6 +67,11 @@ public class HighfiveServiceImpl implements HighfiveService {
 	@Override
 	public List<UserVO> receiveList(String uid) throws Exception {
 		return hfDao.receiveList(uid);
+	}
+
+	@Override
+	public int highfiveCheck(HighfiveVO hf) throws Exception {
+		return hfDao.highfiveCheck(hf);
 	}
 
 }
