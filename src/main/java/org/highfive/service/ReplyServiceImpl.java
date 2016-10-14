@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.highfive.domain.ReplyVO;
 import org.highfive.domain.UserReplyVO;
+import org.highfive.exception.NotExistException;
 import org.highfive.persistence.BoardDAO;
 import org.highfive.persistence.ReplyDAO;
 import org.junit.runner.manipulation.NoTestsRemainException;
@@ -49,7 +50,7 @@ public class ReplyServiceImpl implements ReplyService{
 		}
 		else
 		{
-			throw new NoTestsRemainException();
+			throw new NotExistException();
 		}
 		//return replyDao.list(bno);
 	}
