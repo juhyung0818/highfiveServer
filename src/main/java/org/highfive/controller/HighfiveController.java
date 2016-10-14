@@ -38,7 +38,6 @@ public class HighfiveController {
 		return new ResultVO();
 	}
 
-	//�������̺� ����
 	@ResponseBody
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ResultVO deletePOST(@RequestBody HighfiveVO hf) throws Exception {

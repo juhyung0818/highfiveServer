@@ -20,11 +20,11 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 	private static final String namespace="org.highfive.mapper.FavoritesMapper";
 	
 	@Override
-	public int isLike(FavoritesVO favorites) throws Exception {
+	public FavoritesVO isLike(FavoritesVO favorites) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("uid", favorites.getUid());
 		paramMap.put("bno", favorites.getBno());
-		return session.selectOne(namespace + ".isLike", favorites);
+		return session.selectOne(namespace + ".isLike", paramMap);
 	}
 	
 	//좋아하는 게시글목록에 등록
@@ -35,8 +35,11 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 	
 	//좋아하는 게시글목록에서 삭제
 	@Override
-	public void delete(int fno) throws Exception{
-		session.delete(namespace + ".delete",fno);
+	public void delete(FavoritesVO favorites) throws Exception{
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("uid", favorites.getUid());
+		paramMap.put("bno", favorites.getBno());
+		session.delete(namespace + ".delete", paramMap);
 	}
 
 	//좋아하는 게시글 목록

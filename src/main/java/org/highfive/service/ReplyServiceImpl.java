@@ -35,9 +35,9 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Transactional
 	@Override
-	public void delete(int rno) throws Exception {
-		boardDao.updateReplyCnt(replyDao.getBno(rno), -1);
-		replyDao.delete(rno);
+	public void delete(ReplyVO reply) throws Exception {
+		boardDao.updateReplyCnt(replyDao.getBno(reply.getRno()), -1);
+		replyDao.delete(reply);
 	}
 
 	@Override
@@ -52,7 +52,6 @@ public class ReplyServiceImpl implements ReplyService{
 		{
 			throw new NotExistException();
 		}
-		//return replyDao.list(bno);
 	}
 
 }

@@ -9,6 +9,6 @@ public interface ReplyService {
 
 	public void regist(ReplyVO reply) throws Exception;
 	public void modify(ReplyVO reply) throws Exception;
-	public void delete(int rno) throws Exception;
+	public void delete(ReplyVO reply) throws Exception;
 	public List<UserReplyVO> list(int bno) throws Exception;
 }
