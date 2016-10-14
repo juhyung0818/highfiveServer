@@ -12,6 +12,7 @@ import org.highfive.domain.BoardVO;
 import org.highfive.domain.PageVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
+import org.highfive.exception.NotAuthoriedException;
 import org.highfive.exception.NotExistException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.springframework.stereotype.Repository;
@@ -52,7 +53,14 @@ public class BoardDAOImpl implements BoardDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("bno", board.getBno());
 		paramMap.put("writer", board.getWriter());
-		session.delete(namespace+".delete", paramMap);
+		
+		try {
+			//check if it occur null point exception 
+			session.selectOne(namespace+".getBno", paramMap).equals("");
+			session.delete(namespace+".delete", paramMap);
+		} catch (NullPointerException e) {
+			throw new NotAuthoriedException();
+		}
 	}
 
 	@Override

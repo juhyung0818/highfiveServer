@@ -23,6 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<delete id="delete">
  		delete from tbl_board where bno=#{bno} and writer=#{writer}
  	</delete>
+ 	<select id="getBno" resultType="int">
+ 		select bno from tbl_board where bno=#{bno} and writer=#{writer}
+ 	</select>
 
 	<select id="listAll" resultType="org.highfive.domain.UserBoardVO">
  		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
