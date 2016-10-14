@@ -2,7 +2,7 @@ package org.highfive.domain;
 
 import java.util.Date;
 
-public class BoardVO {
+public class BoardVO extends PageVO{
 
 	private int bno;
 	private String title;

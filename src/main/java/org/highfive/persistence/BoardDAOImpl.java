@@ -82,11 +82,11 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<UserBoardVO> pageList(PageVO page) throws Exception {
+	public List<UserBoardVO> pageList(BoardVO board) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("flag", page.getFlag());
-		paramMap.put("page", page.getPage());
-		paramMap.put("perPageNum", page.getPerPageNum());
+		paramMap.put("flag", board.getFlag());
+		paramMap.put("page", board.getPage());
+		paramMap.put("perPageNum", board.getPerPageNum());
 		return session.selectList(namespace + ".pageList", paramMap);
 	}
 

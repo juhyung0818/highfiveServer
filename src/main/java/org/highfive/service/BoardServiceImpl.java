@@ -61,8 +61,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<UserBoardVO> pageList(PageVO page) throws Exception {
-		List<UserBoardVO> list = dao.pageList(page);
+	public List<UserBoardVO> pageList(BoardVO board) throws Exception {
+		List<UserBoardVO> list = dao.pageList(board);
 		if(list.size() != 0){
 			return list;
 		}

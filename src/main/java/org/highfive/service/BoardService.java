@@ -14,5 +14,5 @@ public interface BoardService {
 	public void delete(BoardVO board) throws Exception;
 	public List<UserBoardVO> listAll(int flag) throws Exception;
 	public List<UserBoardVO> searchList(SearchKeyword keyword) throws Exception;
-	public List<UserBoardVO> pageList(PageVO page) throws Exception;
+	public List<UserBoardVO> pageList(BoardVO board) throws Exception;
 }
