@@ -5,7 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.highfive.domain.FavoritesVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
 import org.highfive.persistence.FavoritesDAO;

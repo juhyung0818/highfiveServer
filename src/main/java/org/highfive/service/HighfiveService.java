@@ -10,10 +10,9 @@ public interface HighfiveService {
 
 	public void regist(HighfiveVO hf) throws Exception;
 	public void delete(HighfiveVO hf) throws Exception;
-//	public int getFlag(HighfiveVO hf) throws Exception;
 	public void accept(HighfiveVO hf) throws Exception;
-	public List<UserVO> highfiveList(String uid) throws Exception;
-	public List<UserVO> sendList(String uid) throws Exception;
-	public List<UserVO> receiveList(String uid) throws Exception;
+	public List<UserVO> highfiveList(HighfiveVO hf) throws Exception;
+	public List<UserVO> sendList(HighfiveVO hf) throws Exception;
+	public List<UserVO> receiveList(HighfiveVO hf) throws Exception;
 	public int highfiveCheck(HighfiveVO hf) throws Exception;
 }

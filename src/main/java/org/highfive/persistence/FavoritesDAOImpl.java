@@ -8,7 +8,6 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.highfive.domain.FavoritesVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
 import org.springframework.stereotype.Repository;

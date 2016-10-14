@@ -3,7 +3,6 @@ package org.highfive.service;
 import java.util.List;
 
 import org.highfive.domain.FavoritesVO;
-import org.highfive.domain.PageVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
 

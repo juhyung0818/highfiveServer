@@ -34,11 +34,6 @@ public class HighfiveServiceImpl implements HighfiveService {
 		hfDao.delete(swapUser(hf));
 	}
 
-//	@Override
-//	public int getFlag(HighfiveVO hf) throws Exception {
-//		return hfDao.getFlag(hf);
-//	}
-
 	@Transactional
 	@Override
 	public void accept(HighfiveVO hf) throws Exception {
@@ -55,18 +50,18 @@ public class HighfiveServiceImpl implements HighfiveService {
 	}
 
 	@Override
-	public List<UserVO> highfiveList(String uid) throws Exception {
-		return hfDao.highfiveList(uid);
+	public List<UserVO> highfiveList(HighfiveVO hf) throws Exception {
+		return hfDao.highfiveList(hf);
 	}
 
 	@Override
-	public List<UserVO> sendList(String uid) throws Exception {
-		return hfDao.sendList(uid);
+	public List<UserVO> sendList(HighfiveVO hf) throws Exception {
+		return hfDao.sendList(hf);
 	}
 
 	@Override
-	public List<UserVO> receiveList(String uid) throws Exception {
-		return hfDao.receiveList(uid);
+	public List<UserVO> receiveList(HighfiveVO hf) throws Exception {
+		return hfDao.receiveList(hf);
 	}
 
 	@Override

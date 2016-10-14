@@ -27,28 +27,23 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 		session.delete(namespace+".delete", hf);
 	}
 
-//	@Override
-//	public int getFlag(HighfiveVO hf) throws Exception {
-//		return session.selectOne(namespace+".getFlag", hf);
-//	}
-
 	public void accept(HighfiveVO hf) {
 		session.update(namespace+".accept", hf);
 	}
 
 	@Override
-	public List<UserVO> highfiveList(String uid) throws Exception {
-		return session.selectList(namespace+".highfiveList", uid);
+	public List<UserVO> highfiveList(HighfiveVO hf) throws Exception {
+		return session.selectList(namespace+".highfiveList", hf);
 	}
 
 	@Override
-	public List<UserVO> sendList(String uid) throws Exception {
-		return session.selectList(namespace+".sendList", uid);
+	public List<UserVO> sendList(HighfiveVO hf) throws Exception {
+		return session.selectList(namespace+".sendList", hf);
 	}
 
 	@Override
-	public List<UserVO> receiveList(String uid) throws Exception {
-		return session.selectList(namespace+".receiveList", uid);
+	public List<UserVO> receiveList(HighfiveVO hf) throws Exception {
+		return session.selectList(namespace+".receiveList", hf);
 	}
 
 	@Override
