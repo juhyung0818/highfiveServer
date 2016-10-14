@@ -6,7 +6,7 @@ public class UserVO {
 	private String uname;
 	private int age;
 	private String nation;
-	private int sex;
+	private int sex; //0:woman, 1:man
 	private String uphoto;
 	private String email;
 	

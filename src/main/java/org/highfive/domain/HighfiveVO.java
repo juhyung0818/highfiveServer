@@ -6,6 +6,9 @@ public class HighfiveVO {
 		
 	private String receiver;
 	private String sender;
+	//0 : sender = receiver
+	//1 : sender -> receiver
+	//2 : receiver <- sender
 	private int flag;
 	private Date sendDate;
 
