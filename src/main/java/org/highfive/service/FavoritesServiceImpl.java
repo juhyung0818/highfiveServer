@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.highfive.domain.FavoritesVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserVO;
+import org.highfive.exception.NotExistException;
 import org.highfive.persistence.FavoritesDAO;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,11 @@ public class FavoritesServiceImpl implements FavoritesService{
 
 	@Override
 	public List<UserBoardVO> favoritesList(UserVO user)throws Exception{
-		return fdao.myFavoritesList(user);
+		List<UserBoardVO> list = fdao.myFavoritesList(user);
+		if(list.size() != 0){
+			return list;
+		}
+		throw new NotExistException();
 	}
 
 	@Override
