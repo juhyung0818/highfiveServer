@@ -11,6 +11,8 @@ import org.highfive.domain.BoardVO;
 import org.highfive.domain.ReplyVO;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.domain.UserReplyVO;
+import org.highfive.exception.NotAuthoriedException;
+import org.highfive.exception.NotExistException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -38,14 +40,27 @@ public class ReplyDAOImpl implements ReplyDAO{
 	@Override
 	public void delete(ReplyVO reply) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
 		paramMap.put("rno", reply.getRno());
 		paramMap.put("uid", reply.getUid());
-		session.delete(namespace+".delete", paramMap);
+
+		try {
+			//check if it occur null point exception 
+			session.selectOne(namespace+".getRno", paramMap).equals("");
+			session.delete(namespace+".delete", paramMap);
+		} catch (NullPointerException e) {
+			throw new NotAuthoriedException();
+		}
 	}
 
 	@Override
 	public int getBno(int rno) throws Exception {
-		return session.selectOne(namespace+".getBno", rno);
+		try {
+			return session.selectOne(namespace+".getBno", rno);	
+		} catch (NullPointerException e) {
+			throw new NotExistException();
+		}
+		
 	}
 
 	@Override

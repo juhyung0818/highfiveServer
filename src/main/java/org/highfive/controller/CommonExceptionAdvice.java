@@ -2,6 +2,7 @@ package org.highfive.controller;
 
 import org.highfive.domain.ResultVO;
 import org.highfive.exception.InvalidTypeException;
+import org.highfive.exception.NotAuthoriedException;
 import org.highfive.exception.NotExistException;
 import org.highfive.exception.UserIdDuplicatedException;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ public class CommonExceptionAdvice {
 
     logger.error(e.getMessage());
     ResultVO result = new ResultVO();
-    result.setCode(e.getExceptionCode().getCode()); //100 중복 id
+    result.setCode(e.getExceptionCode().getCode()); 
     result.setMessage(e.getExceptionCode().getMessage());
     return result;
   }
@@ -32,7 +33,7 @@ public class CommonExceptionAdvice {
 
     logger.error(e.getMessage(), e.getStackTrace());
     ResultVO result = new ResultVO();
-    result.setCode(e.getExceptionCode().getCode()); //300 잘못된 타입
+    result.setCode(e.getExceptionCode().getCode()); 
     result.setMessage(e.getExceptionCode().getMessage());
     return result;
     
@@ -44,7 +45,18 @@ public class CommonExceptionAdvice {
 	  
 	  logger.error(e.getMessage());
 	  ResultVO result = new ResultVO<>();
-	  result.setCode(e.getExceptionCode().getCode()); //300 잘못된 타입
+	  result.setCode(e.getExceptionCode().getCode()); 
+	  result.setMessage(e.getExceptionCode().getMessage());
+	 return result;
+  }
+  
+  @ResponseBody
+  @ExceptionHandler(NotAuthoriedException.class)
+  public ResultVO notAuthoriedException(NotAuthoriedException e) {
+	  
+	  logger.error(e.getMessage());
+	  ResultVO result = new ResultVO<>();
+	  result.setCode(e.getExceptionCode().getCode()); 
 	  result.setMessage(e.getExceptionCode().getMessage());
 	 return result;
   }
@@ -56,7 +68,7 @@ public class CommonExceptionAdvice {
 //    logger.error(e.getMessage());
 //    
 //    ResultVO result = new ResultVO();
-//    result.setCode(100); //100 중복 id
+//    result.setCode(100); //100 以묐났 id
 //    result.setMessage("SQL Exception");
 //   
 //    return result;
