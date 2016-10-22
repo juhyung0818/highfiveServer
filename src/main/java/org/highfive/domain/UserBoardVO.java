@@ -1,13 +1,11 @@
 package org.highfive.domain;
 
-import java.util.Date;
-
 public class UserBoardVO {
 	
 	private int bno;
 	private String title;
 	private String writer; //uid
-	private Date regdate;
+	private String regdate;
 	private String startdate;
 	private String enddate;
 	private int viewcnt;
@@ -35,10 +33,10 @@ public class UserBoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	public String getStartdate() {

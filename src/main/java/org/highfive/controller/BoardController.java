@@ -1,5 +1,6 @@
 package org.highfive.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +89,11 @@ public class BoardController {
 		logger.info("board pageList.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = boardService.pageList(board);
+		SimpleDateFormat regDate = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분 ss초");
+		
+		for(int i=0; i<list.size(); i++){
+			System.out.println(list.get(i));
+		}
 		return new ResultVO<>(list);
 	}
 }
