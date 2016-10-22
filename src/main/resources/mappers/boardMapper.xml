@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
 
 	<select id="listAll" resultType="org.highfive.domain.UserBoardVO">
- 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b,replycnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u
  		on b.writer=u.uid
  		where flag=#{flag}
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<select id="searchList" resultType="org.highfive.domain.UserBoardVO">
- 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+ 		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b,replycnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u
  		on b.writer=u.uid
  		where (b.title like CONCAT('%', #{keyword}, '%') OR b.content likoqkfkrl1	 e CONCAT('%', #{keyword}, '%')) and flag=#{flag}
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="pageList" resultType="org.highfive.domain.UserBoardVO">
-		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b.language, b.flag, u.uname, u.uphoto
+		select b.bno, b.title, b.content, b.writer, b.regdate, b.startdate, b.enddate, b.viewcnt, b,replycnt, b.language, b.flag, u.uname, u.uphoto
  		from tbl_board as b join tbl_user as u
  		on b.writer=u.uid
  		where flag=#{flag}
