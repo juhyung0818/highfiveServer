@@ -66,4 +66,14 @@ public class FavoritesServiceImpl implements FavoritesService{
 		}
 		throw new NotExistException();
 	}
+
+	@Override
+	public boolean checkLike(FavoritesVO favorite) throws Exception {
+		FavoritesVO temp = fdao.isLike(favorite);
+		if(temp != null){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

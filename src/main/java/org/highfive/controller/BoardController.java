@@ -1,17 +1,17 @@
 package org.highfive.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.highfive.domain.BoardVO;
-import org.highfive.domain.PageVO;
+import org.highfive.domain.FavoritesVO;
 import org.highfive.domain.ResultVO;
 import org.highfive.domain.SearchKeyword;
 import org.highfive.domain.UserBoardVO;
 import org.highfive.service.BoardService;
+import org.highfive.service.FavoritesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -26,6 +26,8 @@ public class BoardController {
 	
 	@Inject
 	private BoardService boardService;
+	@Inject
+	private FavoritesService fService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
@@ -41,8 +43,13 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value="/read", method=RequestMethod.POST)
 	public ResultVO<BoardVO> read(@RequestBody BoardVO board) throws Exception{
-		board = boardService.read(board);
 		logger.info("board read............ ");
+		FavoritesVO favorite = new FavoritesVO();
+		favorite.setBno(board.getBno());
+		favorite.setUid(board.getWriter());
+		board = boardService.read(board);
+		System.out.println(favorite.toString());
+		board.setLike(fService.checkLike(favorite));
 		return new ResultVO<>(board);
 	}
 	
@@ -89,11 +96,7 @@ public class BoardController {
 		logger.info("board pageList.....");
 		List<UserBoardVO> list = new ArrayList<UserBoardVO>();
 		list = boardService.pageList(board);
-		SimpleDateFormat regDate = new SimpleDateFormat("yyyy년 MM월 dd일 hh시 mm분 ss초");
 		
-		for(int i=0; i<list.size(); i++){
-			System.out.println(list.get(i));
-		}
 		return new ResultVO<>(list);
 	}
 }

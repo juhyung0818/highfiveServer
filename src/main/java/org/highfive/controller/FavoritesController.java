@@ -30,7 +30,7 @@ public class FavoritesController {
 	@ResponseBody
 	@RequestMapping(value="/like", method=RequestMethod.POST)
 	public ResultVO like(@RequestBody FavoritesVO favorite) throws Exception{
-		logger.info("favorites... " +favorite.toString());
+		logger.info("favorites... " + favorite.toString());
 		fservice.isLike(favorite);
 		return new ResultVO();
 	}

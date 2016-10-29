@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<delete id="delete">
  		delete from tbl_board where bno=#{bno} and writer=#{writer}
  	</delete>
+ 	
  	<select id="getBno" resultType="int">
  		select bno from tbl_board where bno=#{bno} and writer=#{writer}
  	</select>

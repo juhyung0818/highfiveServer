@@ -21,10 +21,10 @@ public class FavoritesDAOImpl implements FavoritesDAO{
 	private static final String namespace="org.highfive.mapper.FavoritesMapper";
 	
 	@Override
-	public FavoritesVO isLike(FavoritesVO favorites) throws Exception {
+	public FavoritesVO isLike(FavoritesVO favorite) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("uid", favorites.getUid());
-		paramMap.put("bno", favorites.getBno());
+		paramMap.put("uid", favorite.getUid());
+		paramMap.put("bno", favorite.getBno());
 		return session.selectOne(namespace + ".isLike", paramMap);
 	}
 	
