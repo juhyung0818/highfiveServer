@@ -16,7 +16,8 @@ public class BoardVO extends PageVO{
 	private String language;
 	//korean : 1
 	//foreign : 0
-	private int flag; 
+	private int flag;
+	private boolean like;
 
 	public int getBno() {
 		return bno;
@@ -84,10 +85,17 @@ public class BoardVO extends PageVO{
 	public void setFlag(int flag) {
 		this.flag = flag;
 	}
+	public boolean getLike(){
+		return like;
+	}
+	public void setLike(boolean like){
+		this.like = like;
+	}
+	
 	@Override
 	public String toString() {
 		return "BoardVO [bno=" + bno + ", title=" + title + ", contnet=" + content + ", writer=" + writer + ", regdate="
 				+ regdate + ", startdate=" + startdate + ", enddate=" + enddate + ", viewcnt=" + viewcnt + ", replycnt="
-				+ replycnt + ", language=" + language + ", flag=" + flag + "]";
+				+ replycnt + ", language=" + language + ", flag=" + flag + ", like=" + like +"]";
 	}
 }

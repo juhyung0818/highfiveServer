@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_user where uid=#{uid}
 	</select>
 
+	<!-- modify : uname, uphoto, email -->
 	<update id="modify">
 		update tbl_user set uname=#{uname}, uphoto=#{uphoto}, email=#{email} 
  		where uid=#{uid}

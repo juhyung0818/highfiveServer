@@ -52,7 +52,7 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public ResultVO<UserVO> modify(@RequestBody UserVO user) throws Exception{
-		logger.info("modify.....");
+		logger.info(user.getUid() + " - user modify.......");
 		userService.modify(user);
 		return new ResultVO();
 	}
