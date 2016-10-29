@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<update id="modify">
-		update tbl_user set uname=#{uname}, age=#{age}, nation=#{nation}, sex=#{sex}, uphoto=#{uphoto}, email=#{email} 
+		update tbl_user set uname=#{uname}, uphoto=#{uphoto}, email=#{email} 
  		where uid=#{uid}
 	</update>
 	

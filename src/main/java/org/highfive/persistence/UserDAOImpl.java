@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public void modify(UserVO user) throws Exception {
-		session.update(namespace + ".modify");
+		session.update(namespace + ".modify", user);
 	}
 
 	@Override

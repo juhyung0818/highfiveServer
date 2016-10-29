@@ -26,7 +26,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@ResponseBody
-	@RequestMapping(value="/regis", method=RequestMethod.POST)
+	@RequestMapping(value="/regist", method=RequestMethod.POST)
 	public ResultVO regist(@RequestBody UserVO user) throws Exception{
 		logger.info("register post.......");
 		userService.regist(user);
@@ -47,6 +47,14 @@ public class UserController {
 		user = userService.read(hf.getReceiver(), flag);
 		logger.info(user.toString());
 		return new ResultVO<>(user);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public ResultVO<UserVO> modify(@RequestBody UserVO user) throws Exception{
+		logger.info("modify.....");
+		userService.modify(user);
+		return new ResultVO();
 	}
 
 	@ResponseBody

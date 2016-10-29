@@ -54,6 +54,9 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 
 	@Override
 	public int highfiveCheck(HighfiveVO hf) throws Exception {
+		//if sender == receiver
+		if(hf.getReceiver().equals(hf.getSender()))
+			return 0;
 		try{
 			return session.selectOne(namespace + ".highfiveCheck", hf);
 		}catch(NullPointerException e){
