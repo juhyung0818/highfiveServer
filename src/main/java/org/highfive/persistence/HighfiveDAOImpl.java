@@ -51,7 +51,6 @@ public class HighfiveDAOImpl implements HighfiveDAO{
 	public List<UserVO> receiveList(HighfiveVO hf) throws Exception {
 		return session.selectList(namespace+".receiveList", hf);
 	}
-
 	
 	@Override
 	public int highfiveCheck(HighfiveVO hf) throws Exception {

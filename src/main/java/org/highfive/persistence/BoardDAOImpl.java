@@ -40,7 +40,6 @@ public class BoardDAOImpl implements BoardDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("bno", board.getBno());
 		paramMap.put("writer", board.getWriter());
-		
 		try {
 			//check if it occur null point exception 
 			session.selectOne(namespace+".getBno", paramMap).equals("");
@@ -75,11 +74,7 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public List<UserBoardVO> pageList(BoardVO board) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("flag", board.getFlag());
-		paramMap.put("page", board.getPage());
-		paramMap.put("perPageNum", board.getPerPageNum());
-		return session.selectList(namespace + ".pageList", paramMap);
+		return session.selectList(namespace + ".pageList", board);
 	}
 
 	

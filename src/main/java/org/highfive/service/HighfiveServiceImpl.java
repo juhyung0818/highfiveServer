@@ -27,7 +27,6 @@ public class HighfiveServiceImpl implements HighfiveService {
 
 	@Transactional
 	@Override
-
 	public void delete(HighfiveVO hf) throws Exception {
 
 		hfDao.delete(hf);
