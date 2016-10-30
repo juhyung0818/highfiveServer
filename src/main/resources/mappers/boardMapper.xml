@@ -11,8 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="read" resultType="org.highfive.domain.BoardVO">
- 		select bno, title, content, writer, regdate, startdate, enddate, viewcnt, replycnt, language, flag
- 		from tbl_board where bno=#{bno}
+ 		select bno, title, content, writer, regdate, startdate, enddate, viewcnt, replycnt, language, flag, uname
+ 		from tbl_board join tbl_user on writer=uid 
+ 		where bno=#{bno}
  	</select>
 
  	<update id="modify">
